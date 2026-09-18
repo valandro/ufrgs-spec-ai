@@ -1,0 +1,36 @@
+Transações Pix por Município
+
+Transações Pix liquidadas por município e por pessoas físicas (PF) e jurídicas (PJ), considerando a perspectiva do pagador e do recebedor.
+
+Parâmetros
+
+Nome	Tipo	Título	Descrição
+DataBase	texto	Data-base	Os dados serão trazidos a partir da data-base fornecida como parâmetro no formato AAAAMM.
+$format	texto	$format	Tipo de conteúdo que será retornado
+$select	texto	$select	Propriedades que serão retornadas
+$filter	texto	$filter	Filtro de seleção de entidades. e.g. Nome eq 'João'. Clique aqui para as opções de operadores e funções.
+$orderby	texto	$orderby	Propriedades para ordenação das entidades. e.g. Nome asc, Idade desc
+$skip	inteiro	$skip	Índice (maior ou igual a zero) da primeira entidade que será retornada
+$top	inteiro	$top	Número máximo (maior que zero) de entidades que serão retornadas
+Resultado
+
+Nome	Tipo	Título	Descrição
+AnoMes	inteiro	Data-base	Data-base no formato AAAAMM
+Municipio_Ibge	inteiro	Código Município	Código IBGE do município
+Municipio	texto	Município	Nome do município
+Estado_Ibge	inteiro	Código Estado	Código IBGE do estado
+Estado	texto	Estado	Nome do Estado
+Sigla_Regiao	texto	Sigla Região	Sigla da Região
+Regiao	texto	Região	Região do país (Norte, Nordeste, Sul, Sudeste e Centro-Oeste).
+VL_PagadorPF	decimal	Valor Pagador PF	Volume financeiro em R$ das transações cujo Pagador é uma pessoa física (PF).
+QT_PagadorPF	decimal	Quantidade de Transações Pagador PF	Quantidade de transações cujo Pagador é uma pessoa física (PF).
+VL_PagadorPJ	decimal	Valor Pagador PJ	Volume financeiro em R$ das transações cujo Pagador é uma pessoa jurídica (PJ).
+QT_PagadorPJ	decimal	Quantidade de Transações Pagador PJ	Quantidade de transações cujo Pagador é uma pessoa jurídica (PJ).
+VL_RecebedorPF	decimal	Valor Recebedor PF	Volume financeiro em R$ das transações cujo Recebedor é uma pessoa física (PF).
+QT_RecebedorPF	decimal	Quantidade de Transações Recebedor PF	Quantidade de transações cujo Recebedor é uma pessoa física (PF).
+VL_RecebedorPJ	decimal	Valor Recebedor PJ	Volume financeiro em R$ das transações cujo Recebedor é uma pessoa jurídica (PJ).
+QT_RecebedorPJ	decimal	Quantidade de Transações Recebedor PJ	Quantidade de transações cujo Recebedor é uma pessoa jurídica (PJ).
+QT_PES_PagadorPF	decimal	Quantidade Pagador Pessoa PF	Quantidade de pagadores pessoas físicas
+QT_PES_PagadorPJ	decimal	Quantidade Pagador Pessoa PJ	Quantidade de pagadores pessoas jurídicas
+QT_PES_RecebedorPF	decimal	Quantidade Recebedor Pessoa PF	Quantidade de recebedores pessoas físicas
+QT_PES_RecebedorPJ	decimal	Quantidade Recebedor Pessoa PJ	Quantidade de recebedores pessoas jurídicas
