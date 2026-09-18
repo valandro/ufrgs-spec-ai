@@ -40,14 +40,14 @@ O conteúdo é agrupado pelos eixos temáticos das disciplinas (IA001–IA016):
 
 ## Estrutura sugerida
 
-​```
+```text
 .
 ├── IA001-analise-visualizacao-dados/
 ├── IA002-agentes-ia-generativa/
 ├── IA003-probabilidade-estatistica/
 ├── ...
 └── TCC/
-​```
+```
 
 Cada pasta de disciplina reúne resumos, notebooks, exercícios e referências correspondentes.
 
