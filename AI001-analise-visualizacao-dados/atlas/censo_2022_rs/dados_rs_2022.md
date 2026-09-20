@@ -1,0 +1,1 @@
+Dados podem ser obtidos em https://www.ibge.gov.br/estatisticas/sociais/trabalho/22827-censo-demografico-2022.html?=&t=resultados
