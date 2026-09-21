@@ -1,6 +1,6 @@
-### estrutura do arquivo
+### Estrutura do arquivo
 
-o CSV tem uma linha em branco (separador) cheia de espaços em vez de vazio de verdade, e isso faz o pandas ler colunas inteiras como texto em vez de número — qualquer correlação ou média vai quebrar ou dar resultado errado até vocês limparem essas linhas e converter com pd.to_numeric(..., errors='coerce'). Vale documentar isso na seção de "Carregamento dos dados".
+**Verificar:** O CSV tem uma linha em branco (separador) cheia de espaços em vez de vazio de verdade, e isso faz o pandas ler colunas inteiras como texto em vez de número — qualquer correlação ou média vai quebrar ou dar resultado errado até vocês limparem essas linhas e converter com pd.to_numeric(..., errors='coerce'). Vale documentar isso na seção de "Carregamento dos dados".
 
 ### Colunas Válidas
 
