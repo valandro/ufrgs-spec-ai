@@ -1,9 +1,0 @@
-O arquivo CSV, gerado no padrão de codificação de caracteres UTF-8, possui os seguintes dados, separados por ponto e vírgula:
-
-DATA_BASE: Mês de referência no formato AAAAMM.
-TIPO_DESENROLA: Tipos 1 e 2, correspondendo às faixas 1 e 2 (¹), e tipo 3 (²).
-UNIDADE_FEDERACAO: Sigla da unidade da federação.
-COD_CONGLOMERADO_FINANCEIRO: Código do conglomerado financeiro.
-NOME_CONGLOMERADO_FINANCEIRO: Nome do conglomerado financeiro.
-NUMERO_OPERACOES: Número de operações renegociadas no mês de referência.
-VOLUME_OPERACOES: Somatório dos valores das operações após a concessão do desconto, em reais, renegociadas no mês de referência (casa decimal separada por vírgula).
