@@ -1,0 +1,497 @@
+codigo_ibge,municipio,Territorialidades,corede,regiao_funcional,regiao_funcional_id
+4300034,Aceguá,Aceguá (RS),Campanha,RF6,6
+4300059,Água Santa,Água Santa (RS),Nordeste,RF9,9
+4300109,Agudo,Agudo (RS),Central,RF8,8
+4300208,Ajuricaba,Ajuricaba (RS),Noroeste Colonial,RF7,7
+4300307,Alecrim,Alecrim (RS),Fronteira Noroeste,RF7,7
+4300406,Alegrete,Alegrete (RS),Fronteira Oeste,RF6,6
+4300455,Alegria,Alegria (RS),Fronteira Noroeste,RF7,7
+4300471,Almirante Tamandaré do Sul,Almirante Tamandaré do Sul (RS),Produção,RF9,9
+4300505,Alpestre,Alpestre (RS),Médio Alto Uruguai,RF9,9
+4300554,Alto Alegre,Alto Alegre (RS),Alto da Serra do Botucaraí,RF9,9
+4300570,Alto Feliz,Alto Feliz (RS),Vale do Caí,RF1,1
+4300604,Alvorada,Alvorada (RS),Metropolitano Delta do Jacuí,RF1,1
+4300638,Amaral Ferrador,Amaral Ferrador (RS),Sul,RF5,5
+4300646,Ametista do Sul,Ametista do Sul (RS),Médio Alto Uruguai,RF9,9
+4300661,André da Rocha,André da Rocha (RS),Campos de Cima da Serra,RF3,3
+4300703,Anta Gorda,Anta Gorda (RS),Vale do Taquari,RF2,2
+4300802,Antônio Prado,Antônio Prado (RS),Serra,RF3,3
+4300851,Arambaré,Arambaré (RS),Centro-Sul,RF1,1
+4300877,Araricá,Araricá (RS),Vale do Rio dos Sinos,RF1,1
+4300901,Aratiba,Aratiba (RS),Norte,RF9,9
+4301008,Arroio do Meio,Arroio do Meio (RS),Vale do Taquari,RF2,2
+4301057,Arroio do Sal,Arroio do Sal (RS),Litoral,RF4,4
+4301073,Arroio do Padre,Arroio do Padre (RS),Sul,RF5,5
+4301107,Arroio dos Ratos,Arroio dos Ratos (RS),Centro-Sul,RF1,1
+4301206,Arroio do Tigre,Arroio do Tigre (RS),Vale do Rio Pardo,RF2,2
+4301305,Arroio Grande,Arroio Grande (RS),Sul,RF5,5
+4301404,Arvorezinha,Arvorezinha (RS),Vale do Taquari,RF2,2
+4301503,Augusto Pestana,Augusto Pestana (RS),Noroeste Colonial,RF7,7
+4301552,Áurea,Áurea (RS),Norte,RF9,9
+4301602,Bagé,Bagé (RS),Campanha,RF6,6
+4301636,Balneário Pinhal,Balneário Pinhal (RS),Litoral,RF4,4
+4301651,Barão,Barão (RS),Vale do Caí,RF1,1
+4301701,Barão de Cotegipe,Barão de Cotegipe (RS),Norte,RF9,9
+4301750,Barão do Triunfo,Barão do Triunfo (RS),Centro-Sul,RF1,1
+4301800,Barracão,Barracão (RS),Nordeste,RF9,9
+4301859,Barra do Guarita,Barra do Guarita (RS),Celeiro,RF7,7
+4301875,Barra do Quaraí,Barra do Quaraí (RS),Fronteira Oeste,RF6,6
+4301909,Barra do Ribeiro,Barra do Ribeiro (RS),Centro-Sul,RF1,1
+4301925,Barra do Rio Azul,Barra do Rio Azul (RS),Norte,RF9,9
+4301958,Barra Funda,Barra Funda (RS),Rio da Várzea,RF9,9
+4302006,Barros Cassal,Barros Cassal (RS),Alto da Serra do Botucaraí,RF9,9
+4302055,Benjamin Constant do Sul,Benjamin Constant do Sul (RS),Norte,RF9,9
+4302105,Bento Gonçalves,Bento Gonçalves (RS),Serra,RF3,3
+4302154,Boa Vista das Missões,Boa Vista das Missões (RS),Rio da Várzea,RF9,9
+4302204,Boa Vista do Buricá,Boa Vista do Buricá (RS),Fronteira Noroeste,RF7,7
+4302220,Boa Vista do Cadeado,Boa Vista do Cadeado (RS),Alto Jacuí,RF8,8
+4302238,Boa Vista do Incra,Boa Vista do Incra (RS),Alto Jacuí,RF8,8
+4302253,Boa Vista do Sul,Boa Vista do Sul (RS),Serra,RF3,3
+4302303,Bom Jesus,Bom Jesus (RS),Campos de Cima da Serra,RF3,3
+4302352,Bom Princípio,Bom Princípio (RS),Vale do Caí,RF1,1
+4302378,Bom Progresso,Bom Progresso (RS),Celeiro,RF7,7
+4302402,Bom Retiro do Sul,Bom Retiro do Sul (RS),Vale do Taquari,RF2,2
+4302451,Boqueirão do Leão,Boqueirão do Leão (RS),Vale do Rio Pardo,RF2,2
+4302501,Bossoroca,Bossoroca (RS),Missões,RF7,7
+4302584,Bozano,Bozano (RS),Noroeste Colonial,RF7,7
+4302600,Braga,Braga (RS),Celeiro,RF7,7
+4302659,Brochier,Brochier (RS),Vale do Caí,RF1,1
+4302709,Butiá,Butiá (RS),Centro-Sul,RF1,1
+4302808,Caçapava do Sul,Caçapava do Sul (RS),Campanha,RF6,6
+4302907,Cacequi,Cacequi (RS),Vale do Jaguari,RF8,8
+4303004,Cachoeira do Sul,Cachoeira do Sul (RS),Jacuí Centro,RF8,8
+4303103,Cachoeirinha,Cachoeirinha (RS),Metropolitano Delta do Jacuí,RF1,1
+4303202,Cacique Doble,Cacique Doble (RS),Nordeste,RF9,9
+4303301,Caibaté,Caibaté (RS),Missões,RF7,7
+4303400,Caiçara,Caiçara (RS),Médio Alto Uruguai,RF9,9
+4303509,Camaquã,Camaquã (RS),Centro-Sul,RF1,1
+4303558,Camargo,Camargo (RS),Produção,RF9,9
+4303608,Cambará do Sul,Cambará do Sul (RS),Hortênsias,RF3,3
+4303673,Campestre da Serra,Campestre da Serra (RS),Campos de Cima da Serra,RF3,3
+4303707,Campina das Missões,Campina das Missões (RS),Fronteira Noroeste,RF7,7
+4303806,Campinas do Sul,Campinas do Sul (RS),Norte,RF9,9
+4303905,Campo Bom,Campo Bom (RS),Vale do Rio dos Sinos,RF1,1
+4304002,Campo Novo,Campo Novo (RS),Celeiro,RF7,7
+4304101,Campos Borges,Campos Borges (RS),Alto da Serra do Botucaraí,RF9,9
+4304200,Candelária,Candelária (RS),Vale do Rio Pardo,RF2,2
+4304309,Cândido Godói,Cândido Godói (RS),Fronteira Noroeste,RF7,7
+4304358,Candiota,Candiota (RS),Campanha,RF6,6
+4304408,Canela,Canela (RS),Hortênsias,RF3,3
+4304507,Canguçu,Canguçu (RS),Sul,RF5,5
+4304606,Canoas,Canoas (RS),Vale do Rio dos Sinos,RF1,1
+4304614,Canudos do Vale,Canudos do Vale (RS),Vale do Taquari,RF2,2
+4304622,Capão Bonito do Sul,Capão Bonito do Sul (RS),Nordeste,RF9,9
+4304630,Capão da Canoa,Capão da Canoa (RS),Litoral,RF4,4
+4304655,Capão do Cipó,Capão do Cipó (RS),Vale do Jaguari,RF8,8
+4304663,Capão do Leão,Capão do Leão (RS),Sul,RF5,5
+4304671,Capivari do Sul,Capivari do Sul (RS),Litoral,RF4,4
+4304689,Capela de Santana,Capela de Santana (RS),Vale do Caí,RF1,1
+4304697,Capitão,Capitão (RS),Vale do Taquari,RF2,2
+4304705,Carazinho,Carazinho (RS),Produção,RF9,9
+4304713,Caraá,Caraá (RS),Litoral,RF4,4
+4304804,Carlos Barbosa,Carlos Barbosa (RS),Serra,RF3,3
+4304853,Carlos Gomes,Carlos Gomes (RS),Norte,RF9,9
+4304903,Casca,Casca (RS),Produção,RF9,9
+4304952,Caseiros,Caseiros (RS),Nordeste,RF9,9
+4305009,Catuípe,Catuípe (RS),Noroeste Colonial,RF7,7
+4305108,Caxias do Sul,Caxias do Sul (RS),Serra,RF3,3
+4305116,Centenário,Centenário (RS),Norte,RF9,9
+4305124,Cerrito,Cerrito (RS),Sul,RF5,5
+4305132,Cerro Branco,Cerro Branco (RS),Jacuí Centro,RF8,8
+4305157,Cerro Grande,Cerro Grande (RS),Rio da Várzea,RF9,9
+4305173,Cerro Grande do Sul,Cerro Grande do Sul (RS),Centro-Sul,RF1,1
+4305207,Cerro Largo,Cerro Largo (RS),Missões,RF7,7
+4305306,Chapada,Chapada (RS),Rio da Várzea,RF9,9
+4305355,Charqueadas,Charqueadas (RS),Centro-Sul,RF1,1
+4305371,Charrua,Charrua (RS),Norte,RF9,9
+4305405,Chiapetta,Chiapetta (RS),Celeiro,RF7,7
+4305439,Chuí,Chuí (RS),Sul,RF5,5
+4305447,Chuvisca,Chuvisca (RS),Centro-Sul,RF1,1
+4305454,Cidreira,Cidreira (RS),Litoral,RF4,4
+4305504,Ciríaco,Ciríaco (RS),Produção,RF9,9
+4305587,Colinas,Colinas (RS),Vale do Taquari,RF2,2
+4305603,Colorado,Colorado (RS),Alto Jacuí,RF8,8
+4305702,Condor,Condor (RS),Noroeste Colonial,RF7,7
+4305801,Constantina,Constantina (RS),Rio da Várzea,RF9,9
+4305835,Coqueiro Baixo,Coqueiro Baixo (RS),Vale do Taquari,RF2,2
+4305850,Coqueiros do Sul,Coqueiros do Sul (RS),Produção,RF9,9
+4305871,Coronel Barros,Coronel Barros (RS),Noroeste Colonial,RF7,7
+4305900,Coronel Bicaco,Coronel Bicaco (RS),Celeiro,RF7,7
+4305934,Coronel Pilar,Coronel Pilar (RS),Serra,RF3,3
+4305959,Cotiporã,Cotiporã (RS),Serra,RF3,3
+4305975,Coxilha,Coxilha (RS),Produção,RF9,9
+4306007,Crissiumal,Crissiumal (RS),Celeiro,RF7,7
+4306056,Cristal,Cristal (RS),Centro-Sul,RF1,1
+4306072,Cristal do Sul,Cristal do Sul (RS),Médio Alto Uruguai,RF9,9
+4306106,Cruz Alta,Cruz Alta (RS),Alto Jacuí,RF8,8
+4306130,Cruzaltense,Cruzaltense (RS),Norte,RF9,9
+4306205,Cruzeiro do Sul,Cruzeiro do Sul (RS),Vale do Taquari,RF2,2
+4306304,David Canabarro,David Canabarro (RS),Produção,RF9,9
+4306320,Derrubadas,Derrubadas (RS),Celeiro,RF7,7
+4306353,Dezesseis de Novembro,Dezesseis de Novembro (RS),Missões,RF7,7
+4306379,Dilermando de Aguiar,Dilermando de Aguiar (RS),Central,RF8,8
+4306403,Dois Irmãos,Dois Irmãos (RS),Vale do Rio dos Sinos,RF1,1
+4306429,Dois Irmãos das Missões,Dois Irmãos das Missões (RS),Médio Alto Uruguai,RF9,9
+4306452,Dois Lajeados,Dois Lajeados (RS),Vale do Taquari,RF2,2
+4306502,Dom Feliciano,Dom Feliciano (RS),Centro-Sul,RF1,1
+4306551,Dom Pedro de Alcântara,Dom Pedro de Alcântara (RS),Litoral,RF4,4
+4306601,Dom Pedrito,Dom Pedrito (RS),Campanha,RF6,6
+4306700,Dona Francisca,Dona Francisca (RS),Central,RF8,8
+4306734,Doutor Maurício Cardoso,Doutor Maurício Cardoso (RS),Fronteira Noroeste,RF7,7
+4306759,Doutor Ricardo,Doutor Ricardo (RS),Vale do Taquari,RF2,2
+4306767,Eldorado do Sul,Eldorado do Sul (RS),Metropolitano Delta do Jacuí,RF1,1
+4306809,Encantado,Encantado (RS),Vale do Taquari,RF2,2
+4306908,Encruzilhada do Sul,Encruzilhada do Sul (RS),Vale do Rio Pardo,RF2,2
+4306924,Engenho Velho,Engenho Velho (RS),Rio da Várzea,RF9,9
+4306932,Entre-Ijuís,Entre-Ijuís (RS),Missões,RF7,7
+4306957,Entre Rios do Sul,Entre Rios do Sul (RS),Norte,RF9,9
+4306973,Erebango,Erebango (RS),Norte,RF9,9
+4307005,Erechim,Erechim (RS),Norte,RF9,9
+4307054,Ernestina,Ernestina (RS),Produção,RF9,9
+4307104,Herval,Herval (RS),Sul,RF5,5
+4307203,Erval Grande,Erval Grande (RS),Norte,RF9,9
+4307302,Erval Seco,Erval Seco (RS),Médio Alto Uruguai,RF9,9
+4307401,Esmeralda,Esmeralda (RS),Campos de Cima da Serra,RF3,3
+4307450,Esperança do Sul,Esperança do Sul (RS),Celeiro,RF7,7
+4307500,Espumoso,Espumoso (RS),Alto da Serra do Botucaraí,RF9,9
+4307559,Estação,Estação (RS),Norte,RF9,9
+4307609,Estância Velha,Estância Velha (RS),Vale do Rio dos Sinos,RF1,1
+4307708,Esteio,Esteio (RS),Vale do Rio dos Sinos,RF1,1
+4307807,Estrela,Estrela (RS),Vale do Taquari,RF2,2
+4307815,Estrela Velha,Estrela Velha (RS),Vale do Rio Pardo,RF2,2
+4307831,Eugênio de Castro,Eugênio de Castro (RS),Missões,RF7,7
+4307864,Fagundes Varela,Fagundes Varela (RS),Serra,RF3,3
+4307906,Farroupilha,Farroupilha (RS),Serra,RF3,3
+4308003,Faxinal do Soturno,Faxinal do Soturno (RS),Central,RF8,8
+4308052,Faxinalzinho,Faxinalzinho (RS),Norte,RF9,9
+4308078,Fazenda Vilanova,Fazenda Vilanova (RS),Vale do Taquari,RF2,2
+4308102,Feliz,Feliz (RS),Vale do Caí,RF1,1
+4308201,Flores da Cunha,Flores da Cunha (RS),Serra,RF3,3
+4308250,Floriano Peixoto,Floriano Peixoto (RS),Norte,RF9,9
+4308300,Fontoura Xavier,Fontoura Xavier (RS),Alto da Serra do Botucaraí,RF9,9
+4308409,Formigueiro,Formigueiro (RS),Central,RF8,8
+4308433,Forquetinha,Forquetinha (RS),Vale do Taquari,RF2,2
+4308458,Fortaleza dos Valos,Fortaleza dos Valos (RS),Alto Jacuí,RF8,8
+4308508,Frederico Westphalen,Frederico Westphalen (RS),Médio Alto Uruguai,RF9,9
+4308607,Garibaldi,Garibaldi (RS),Serra,RF3,3
+4308656,Garruchos,Garruchos (RS),Missões,RF7,7
+4308706,Gaurama,Gaurama (RS),Norte,RF9,9
+4308805,General Câmara,General Câmara (RS),Vale do Rio Pardo,RF2,2
+4308854,Gentil,Gentil (RS),Produção,RF9,9
+4308904,Getúlio Vargas,Getúlio Vargas (RS),Norte,RF9,9
+4309001,Giruá,Giruá (RS),Missões,RF7,7
+4309050,Glorinha,Glorinha (RS),Metropolitano Delta do Jacuí,RF1,1
+4309100,Gramado,Gramado (RS),Hortênsias,RF3,3
+4309126,Gramado dos Loureiros,Gramado dos Loureiros (RS),Médio Alto Uruguai,RF9,9
+4309159,Gramado Xavier,Gramado Xavier (RS),Alto da Serra do Botucaraí,RF9,9
+4309209,Gravataí,Gravataí (RS),Metropolitano Delta do Jacuí,RF1,1
+4309258,Guabiju,Guabiju (RS),Serra,RF3,3
+4309308,Guaíba,Guaíba (RS),Metropolitano Delta do Jacuí,RF1,1
+4309407,Guaporé,Guaporé (RS),Serra,RF3,3
+4309506,Guarani das Missões,Guarani das Missões (RS),Missões,RF7,7
+4309555,Harmonia,Harmonia (RS),Vale do Caí,RF1,1
+4309571,Herveiras,Herveiras (RS),Vale do Rio Pardo,RF2,2
+4309605,Horizontina,Horizontina (RS),Fronteira Noroeste,RF7,7
+4309654,Hulha Negra,Hulha Negra (RS),Campanha,RF6,6
+4309704,Humaitá,Humaitá (RS),Celeiro,RF7,7
+4309753,Ibarama,Ibarama (RS),Vale do Rio Pardo,RF2,2
+4309803,Ibiaçá,Ibiaçá (RS),Nordeste,RF9,9
+4309902,Ibiraiaras,Ibiraiaras (RS),Nordeste,RF9,9
+4309951,Ibirapuitã,Ibirapuitã (RS),Alto da Serra do Botucaraí,RF9,9
+4310009,Ibirubá,Ibirubá (RS),Alto Jacuí,RF8,8
+4310108,Igrejinha,Igrejinha (RS),Paranhana Encosta da Serra,RF1,1
+4310207,Ijuí,Ijuí (RS),Noroeste Colonial,RF7,7
+4310306,Ilópolis,Ilópolis (RS),Vale do Taquari,RF2,2
+4310330,Imbé,Imbé (RS),Litoral,RF4,4
+4310363,Imigrante,Imigrante (RS),Vale do Taquari,RF2,2
+4310405,Independência,Independência (RS),Fronteira Noroeste,RF7,7
+4310413,Inhacorá,Inhacorá (RS),Celeiro,RF7,7
+4310439,Ipê,Ipê (RS),Campos de Cima da Serra,RF3,3
+4310462,Ipiranga do Sul,Ipiranga do Sul (RS),Norte,RF9,9
+4310504,Iraí,Iraí (RS),Médio Alto Uruguai,RF9,9
+4310538,Itaara,Itaara (RS),Central,RF8,8
+4310553,Itacurubi,Itacurubi (RS),Fronteira Oeste,RF6,6
+4310579,Itapuca,Itapuca (RS),Alto da Serra do Botucaraí,RF9,9
+4310603,Itaqui,Itaqui (RS),Fronteira Oeste,RF6,6
+4310652,Itati,Itati (RS),Litoral,RF4,4
+4310702,Itatiba do Sul,Itatiba do Sul (RS),Norte,RF9,9
+4310751,Ivorá,Ivorá (RS),Central,RF8,8
+4310801,Ivoti,Ivoti (RS),Vale do Rio dos Sinos,RF1,1
+4310850,Jaboticaba,Jaboticaba (RS),Rio da Várzea,RF9,9
+4310876,Jacuizinho,Jacuizinho (RS),Alto da Serra do Botucaraí,RF9,9
+4310900,Jacutinga,Jacutinga (RS),Norte,RF9,9
+4311007,Jaguarão,Jaguarão (RS),Sul,RF5,5
+4311106,Jaguari,Jaguari (RS),Vale do Jaguari,RF8,8
+4311122,Jaquirana,Jaquirana (RS),Hortênsias,RF3,3
+4311130,Jari,Jari (RS),Central,RF8,8
+4311155,Jóia,Jóia (RS),Noroeste Colonial,RF7,7
+4311205,Júlio de Castilhos,Júlio de Castilhos (RS),Central,RF8,8
+4311239,Lagoa Bonita do Sul,Lagoa Bonita do Sul (RS),Vale do Rio Pardo,RF2,2
+4311254,Lagoão,Lagoão (RS),Alto da Serra do Botucaraí,RF9,9
+4311270,Lagoa dos Três Cantos,Lagoa dos Três Cantos (RS),Alto Jacuí,RF8,8
+4311304,Lagoa Vermelha,Lagoa Vermelha (RS),Nordeste,RF9,9
+4311403,Lajeado,Lajeado (RS),Vale do Taquari,RF2,2
+4311429,Lajeado do Bugre,Lajeado do Bugre (RS),Rio da Várzea,RF9,9
+4311502,Lavras do Sul,Lavras do Sul (RS),Campanha,RF6,6
+4311601,Liberato Salzano,Liberato Salzano (RS),Rio da Várzea,RF9,9
+4311627,Lindolfo Collor,Lindolfo Collor (RS),Paranhana Encosta da Serra,RF1,1
+4311643,Linha Nova,Linha Nova (RS),Vale do Caí,RF1,1
+4311700,Machadinho,Machadinho (RS),Nordeste,RF9,9
+4311718,Maçambará,Maçambará (RS),Fronteira Oeste,RF6,6
+4311734,Mampituba,Mampituba (RS),Litoral,RF4,4
+4311759,Manoel Viana,Manoel Viana (RS),Fronteira Oeste,RF6,6
+4311775,Maquiné,Maquiné (RS),Litoral,RF4,4
+4311791,Maratá,Maratá (RS),Vale do Caí,RF1,1
+4311809,Marau,Marau (RS),Produção,RF9,9
+4311908,Marcelino Ramos,Marcelino Ramos (RS),Norte,RF9,9
+4311981,Mariana Pimentel,Mariana Pimentel (RS),Centro-Sul,RF1,1
+4312005,Mariano Moro,Mariano Moro (RS),Norte,RF9,9
+4312054,Marques de Souza,Marques de Souza (RS),Vale do Taquari,RF2,2
+4312104,Mata,Mata (RS),Vale do Jaguari,RF8,8
+4312138,Mato Castelhano,Mato Castelhano (RS),Produção,RF9,9
+4312153,Mato Leitão,Mato Leitão (RS),Vale do Rio Pardo,RF2,2
+4312179,Mato Queimado,Mato Queimado (RS),Missões,RF7,7
+4312203,Maximiliano de Almeida,Maximiliano de Almeida (RS),Nordeste,RF9,9
+4312252,Minas do Leão,Minas do Leão (RS),Centro-Sul,RF1,1
+4312302,Miraguaí,Miraguaí (RS),Celeiro,RF7,7
+4312351,Montauri,Montauri (RS),Serra,RF3,3
+4312377,Monte Alegre dos Campos,Monte Alegre dos Campos (RS),Campos de Cima da Serra,RF3,3
+4312385,Monte Belo do Sul,Monte Belo do Sul (RS),Serra,RF3,3
+4312401,Montenegro,Montenegro (RS),Vale do Caí,RF1,1
+4312427,Mormaço,Mormaço (RS),Alto da Serra do Botucaraí,RF9,9
+4312443,Morrinhos do Sul,Morrinhos do Sul (RS),Litoral,RF4,4
+4312450,Morro Redondo,Morro Redondo (RS),Sul,RF5,5
+4312476,Morro Reuter,Morro Reuter (RS),Paranhana Encosta da Serra,RF1,1
+4312500,Mostardas,Mostardas (RS),Litoral,RF4,4
+4312609,Muçum,Muçum (RS),Vale do Taquari,RF2,2
+4312617,Muitos Capões,Muitos Capões (RS),Campos de Cima da Serra,RF3,3
+4312625,Muliterno,Muliterno (RS),Produção,RF9,9
+4312658,Não-Me-Toque,Não-Me-Toque (RS),Alto Jacuí,RF8,8
+4312674,Nicolau Vergueiro,Nicolau Vergueiro (RS),Alto da Serra do Botucaraí,RF9,9
+4312708,Nonoai,Nonoai (RS),Médio Alto Uruguai,RF9,9
+4312757,Nova Alvorada,Nova Alvorada (RS),Produção,RF9,9
+4312807,Nova Araçá,Nova Araçá (RS),Serra,RF3,3
+4312906,Nova Bassano,Nova Bassano (RS),Serra,RF3,3
+4312955,Nova Boa Vista,Nova Boa Vista (RS),Rio da Várzea,RF9,9
+4313003,Nova Bréscia,Nova Bréscia (RS),Vale do Taquari,RF2,2
+4313011,Nova Candelária,Nova Candelária (RS),Fronteira Noroeste,RF7,7
+4313037,Nova Esperança do Sul,Nova Esperança do Sul (RS),Vale do Jaguari,RF8,8
+4313060,Nova Hartz,Nova Hartz (RS),Vale do Rio dos Sinos,RF1,1
+4313086,Nova Pádua,Nova Pádua (RS),Serra,RF3,3
+4313102,Nova Palma,Nova Palma (RS),Central,RF8,8
+4313201,Nova Petrópolis,Nova Petrópolis (RS),Hortênsias,RF3,3
+4313300,Nova Prata,Nova Prata (RS),Serra,RF3,3
+4313334,Nova Ramada,Nova Ramada (RS),Noroeste Colonial,RF7,7
+4313359,Nova Roma do Sul,Nova Roma do Sul (RS),Serra,RF3,3
+4313375,Nova Santa Rita,Nova Santa Rita (RS),Vale do Rio dos Sinos,RF1,1
+4313391,Novo Cabrais,Novo Cabrais (RS),Jacuí Centro,RF8,8
+4313409,Novo Hamburgo,Novo Hamburgo (RS),Vale do Rio dos Sinos,RF1,1
+4313425,Novo Machado,Novo Machado (RS),Fronteira Noroeste,RF7,7
+4313441,Novo Tiradentes,Novo Tiradentes (RS),Médio Alto Uruguai,RF9,9
+4313466,Novo Xingu,Novo Xingu (RS),Rio da Várzea,RF9,9
+4313490,Novo Barreiro,Novo Barreiro (RS),Rio da Várzea,RF9,9
+4313508,Osório,Osório (RS),Litoral,RF4,4
+4313607,Paim Filho,Paim Filho (RS),Nordeste,RF9,9
+4313656,Palmares do Sul,Palmares do Sul (RS),Litoral,RF4,4
+4313706,Palmeira das Missões,Palmeira das Missões (RS),Rio da Várzea,RF9,9
+4313805,Palmitinho,Palmitinho (RS),Médio Alto Uruguai,RF9,9
+4313904,Panambi,Panambi (RS),Noroeste Colonial,RF7,7
+4313953,Pantano Grande,Pantano Grande (RS),Vale do Rio Pardo,RF2,2
+4314001,Paraí,Paraí (RS),Serra,RF3,3
+4314027,Paraíso do Sul,Paraíso do Sul (RS),Jacuí Centro,RF8,8
+4314035,Pareci Novo,Pareci Novo (RS),Vale do Caí,RF1,1
+4314050,Parobé,Parobé (RS),Paranhana Encosta da Serra,RF1,1
+4314068,Passa Sete,Passa Sete (RS),Vale do Rio Pardo,RF2,2
+4314076,Passo do Sobrado,Passo do Sobrado (RS),Vale do Rio Pardo,RF2,2
+4314100,Passo Fundo,Passo Fundo (RS),Produção,RF9,9
+4314134,Paulo Bento,Paulo Bento (RS),Norte,RF9,9
+4314159,Paverama,Paverama (RS),Vale do Taquari,RF2,2
+4314175,Pedras Altas,Pedras Altas (RS),Sul,RF5,5
+4314209,Pedro Osório,Pedro Osório (RS),Sul,RF5,5
+4314308,Pejuçara,Pejuçara (RS),Noroeste Colonial,RF7,7
+4314407,Pelotas,Pelotas (RS),Sul,RF5,5
+4314423,Picada Café,Picada Café (RS),Hortênsias,RF3,3
+4314456,Pinhal,Pinhal (RS),Médio Alto Uruguai,RF9,9
+4314464,Pinhal da Serra,Pinhal da Serra (RS),Campos de Cima da Serra,RF3,3
+4314472,Pinhal Grande,Pinhal Grande (RS),Central,RF8,8
+4314498,Pinheirinho do Vale,Pinheirinho do Vale (RS),Médio Alto Uruguai,RF9,9
+4314506,Pinheiro Machado,Pinheiro Machado (RS),Sul,RF5,5
+4314555,Pirapó,Pirapó (RS),Missões,RF7,7
+4314605,Piratini,Piratini (RS),Sul,RF5,5
+4314704,Planalto,Planalto (RS),Médio Alto Uruguai,RF9,9
+4314753,Poço das Antas,Poço das Antas (RS),Vale do Taquari,RF2,2
+4314779,Pontão,Pontão (RS),Produção,RF9,9
+4314787,Ponte Preta,Ponte Preta (RS),Norte,RF9,9
+4314803,Portão,Portão (RS),Vale do Rio dos Sinos,RF1,1
+4314902,Porto Alegre,Porto Alegre (RS),Metropolitano Delta do Jacuí,RF1,1
+4315008,Porto Lucena,Porto Lucena (RS),Fronteira Noroeste,RF7,7
+4315057,Porto Mauá,Porto Mauá (RS),Fronteira Noroeste,RF7,7
+4315073,Porto Vera Cruz,Porto Vera Cruz (RS),Fronteira Noroeste,RF7,7
+4315107,Porto Xavier,Porto Xavier (RS),Missões,RF7,7
+4315131,Pouso Novo,Pouso Novo (RS),Vale do Taquari,RF2,2
+4315149,Presidente Lucena,Presidente Lucena (RS),Paranhana Encosta da Serra,RF1,1
+4315156,Progresso,Progresso (RS),Vale do Taquari,RF2,2
+4315172,Protásio Alves,Protásio Alves (RS),Serra,RF3,3
+4315206,Putinga,Putinga (RS),Vale do Taquari,RF2,2
+4315305,Quaraí,Quaraí (RS),Fronteira Oeste,RF6,6
+4315313,Quatro Irmãos,Quatro Irmãos (RS),Norte,RF9,9
+4315321,Quevedos,Quevedos (RS),Central,RF8,8
+4315354,Quinze de Novembro,Quinze de Novembro (RS),Alto Jacuí,RF8,8
+4315404,Redentora,Redentora (RS),Celeiro,RF7,7
+4315453,Relvado,Relvado (RS),Vale do Taquari,RF2,2
+4315503,Restinga Seca,Restinga Seca (RS),Jacuí Centro,RF8,8
+4315552,Rio dos Índios,Rio dos Índios (RS),Médio Alto Uruguai,RF9,9
+4315602,Rio Grande,Rio Grande (RS),Sul,RF5,5
+4315701,Rio Pardo,Rio Pardo (RS),Vale do Rio Pardo,RF2,2
+4315750,Riozinho,Riozinho (RS),Paranhana Encosta da Serra,RF1,1
+4315800,Roca Sales,Roca Sales (RS),Vale do Taquari,RF2,2
+4315909,Rodeio Bonito,Rodeio Bonito (RS),Médio Alto Uruguai,RF9,9
+4315958,Rolador,Rolador (RS),Missões,RF7,7
+4316006,Rolante,Rolante (RS),Paranhana Encosta da Serra,RF1,1
+4316105,Ronda Alta,Ronda Alta (RS),Rio da Várzea,RF9,9
+4316204,Rondinha,Rondinha (RS),Rio da Várzea,RF9,9
+4316303,Roque Gonzales,Roque Gonzales (RS),Missões,RF7,7
+4316402,Rosário do Sul,Rosário do Sul (RS),Fronteira Oeste,RF6,6
+4316428,Sagrada Família,Sagrada Família (RS),Rio da Várzea,RF9,9
+4316436,Saldanha Marinho,Saldanha Marinho (RS),Alto Jacuí,RF8,8
+4316451,Salto do Jacuí,Salto do Jacuí (RS),Alto Jacuí,RF8,8
+4316477,Salvador das Missões,Salvador das Missões (RS),Missões,RF7,7
+4316501,Salvador do Sul,Salvador do Sul (RS),Vale do Caí,RF1,1
+4316600,Sananduva,Sananduva (RS),Nordeste,RF9,9
+4316709,Santa Bárbara do Sul,Santa Bárbara do Sul (RS),Alto Jacuí,RF8,8
+4316733,Santa Cecília do Sul,Santa Cecília do Sul (RS),Nordeste,RF9,9
+4316758,Santa Clara do Sul,Santa Clara do Sul (RS),Vale do Taquari,RF2,2
+4316808,Santa Cruz do Sul,Santa Cruz do Sul (RS),Vale do Rio Pardo,RF2,2
+4316907,Santa Maria,Santa Maria (RS),Central,RF8,8
+4316956,Santa Maria do Herval,Santa Maria do Herval (RS),Paranhana Encosta da Serra,RF1,1
+4316972,Santa Margarida do Sul,Santa Margarida do Sul (RS),Fronteira Oeste,RF6,6
+4317004,Santana da Boa Vista,Santana da Boa Vista (RS),Sul,RF5,5
+4317103,Santana do Livramento,Santana do Livramento (RS),Fronteira Oeste,RF6,6
+4317202,Santa Rosa,Santa Rosa (RS),Fronteira Noroeste,RF7,7
+4317251,Santa Tereza,Santa Tereza (RS),Serra,RF3,3
+4317301,Santa Vitória do Palmar,Santa Vitória do Palmar (RS),Sul,RF5,5
+4317400,Santiago,Santiago (RS),Vale do Jaguari,RF8,8
+4317509,Santo Ângelo,Santo Ângelo (RS),Missões,RF7,7
+4317558,Santo Antônio do Palma,Santo Antônio do Palma (RS),Produção,RF9,9
+4317608,Santo Antônio da Patrulha,Santo Antônio da Patrulha (RS),Metropolitano Delta do Jacuí,RF1,1
+4317707,Santo Antônio das Missões,Santo Antônio das Missões (RS),Missões,RF7,7
+4317756,Santo Antônio do Planalto,Santo Antônio do Planalto (RS),Produção,RF9,9
+4317806,Santo Augusto,Santo Augusto (RS),Celeiro,RF7,7
+4317905,Santo Cristo,Santo Cristo (RS),Fronteira Noroeste,RF7,7
+4317954,Santo Expedito do Sul,Santo Expedito do Sul (RS),Nordeste,RF9,9
+4318002,São Borja,São Borja (RS),Fronteira Oeste,RF6,6
+4318051,São Domingos do Sul,São Domingos do Sul (RS),Produção,RF9,9
+4318101,São Francisco de Assis,São Francisco de Assis (RS),Vale do Jaguari,RF8,8
+4318200,São Francisco de Paula,São Francisco de Paula (RS),Hortênsias,RF3,3
+4318309,São Gabriel,São Gabriel (RS),Fronteira Oeste,RF6,6
+4318408,São Jerônimo,São Jerônimo (RS),Centro-Sul,RF1,1
+4318424,São João da Urtiga,São João da Urtiga (RS),Nordeste,RF9,9
+4318432,São João do Polêsine,São João do Polêsine (RS),Central,RF8,8
+4318440,São Jorge,São Jorge (RS),Serra,RF3,3
+4318457,São José das Missões,São José das Missões (RS),Rio da Várzea,RF9,9
+4318465,São José do Herval,São José do Herval (RS),Alto da Serra do Botucaraí,RF9,9
+4318481,São José do Hortêncio,São José do Hortêncio (RS),Vale do Caí,RF1,1
+4318499,São José do Inhacorá,São José do Inhacorá (RS),Fronteira Noroeste,RF7,7
+4318507,São José do Norte,São José do Norte (RS),Sul,RF5,5
+4318606,São José do Ouro,São José do Ouro (RS),Nordeste,RF9,9
+4318614,São José do Sul,São José do Sul (RS),Vale do Caí,RF1,1
+4318622,São José dos Ausentes,São José dos Ausentes (RS),Campos de Cima da Serra,RF3,3
+4318705,São Leopoldo,São Leopoldo (RS),Vale do Rio dos Sinos,RF1,1
+4318804,São Lourenço do Sul,São Lourenço do Sul (RS),Sul,RF5,5
+4318903,São Luiz Gonzaga,São Luiz Gonzaga (RS),Missões,RF7,7
+4319000,São Marcos,São Marcos (RS),Serra,RF3,3
+4319109,São Martinho,São Martinho (RS),Celeiro,RF7,7
+4319125,São Martinho da Serra,São Martinho da Serra (RS),Central,RF8,8
+4319158,São Miguel das Missões,São Miguel das Missões (RS),Missões,RF7,7
+4319208,São Nicolau,São Nicolau (RS),Missões,RF7,7
+4319307,São Paulo das Missões,São Paulo das Missões (RS),Missões,RF7,7
+4319356,São Pedro da Serra,São Pedro da Serra (RS),Vale do Caí,RF1,1
+4319364,São Pedro das Missões,São Pedro das Missões (RS),Rio da Várzea,RF9,9
+4319372,São Pedro do Butiá,São Pedro do Butiá (RS),Missões,RF7,7
+4319406,São Pedro do Sul,São Pedro do Sul (RS),Central,RF8,8
+4319505,São Sebastião do Caí,São Sebastião do Caí (RS),Vale do Caí,RF1,1
+4319604,São Sepé,São Sepé (RS),Jacuí Centro,RF8,8
+4319703,São Valentim,São Valentim (RS),Norte,RF9,9
+4319711,São Valentim do Sul,São Valentim do Sul (RS),Serra,RF3,3
+4319737,São Valério do Sul,São Valério do Sul (RS),Celeiro,RF7,7
+4319752,São Vendelino,São Vendelino (RS),Vale do Caí,RF1,1
+4319802,São Vicente do Sul,São Vicente do Sul (RS),Vale do Jaguari,RF8,8
+4319901,Sapiranga,Sapiranga (RS),Vale do Rio dos Sinos,RF1,1
+4320008,Sapucaia do Sul,Sapucaia do Sul (RS),Vale do Rio dos Sinos,RF1,1
+4320107,Sarandi,Sarandi (RS),Rio da Várzea,RF9,9
+4320206,Seberi,Seberi (RS),Médio Alto Uruguai,RF9,9
+4320230,Sede Nova,Sede Nova (RS),Celeiro,RF7,7
+4320263,Segredo,Segredo (RS),Vale do Rio Pardo,RF2,2
+4320305,Selbach,Selbach (RS),Alto Jacuí,RF8,8
+4320321,Senador Salgado Filho,Senador Salgado Filho (RS),Fronteira Noroeste,RF7,7
+4320354,Sentinela do Sul,Sentinela do Sul (RS),Centro-Sul,RF1,1
+4320404,Serafina Corrêa,Serafina Corrêa (RS),Serra,RF3,3
+4320453,Sério,Sério (RS),Vale do Taquari,RF2,2
+4320503,Sertão,Sertão (RS),Norte,RF9,9
+4320552,Sertão Santana,Sertão Santana (RS),Centro-Sul,RF1,1
+4320578,Sete de Setembro,Sete de Setembro (RS),Missões,RF7,7
+4320602,Severiano de Almeida,Severiano de Almeida (RS),Norte,RF9,9
+4320651,Silveira Martins,Silveira Martins (RS),Central,RF8,8
+4320677,Sinimbu,Sinimbu (RS),Vale do Rio Pardo,RF2,2
+4320701,Sobradinho,Sobradinho (RS),Vale do Rio Pardo,RF2,2
+4320800,Soledade,Soledade (RS),Alto da Serra do Botucaraí,RF9,9
+4320859,Tabaí,Tabaí (RS),Vale do Taquari,RF2,2
+4320909,Tapejara,Tapejara (RS),Nordeste,RF9,9
+4321006,Tapera,Tapera (RS),Alto Jacuí,RF8,8
+4321105,Tapes,Tapes (RS),Centro-Sul,RF1,1
+4321204,Taquara,Taquara (RS),Paranhana Encosta da Serra,RF1,1
+4321303,Taquari,Taquari (RS),Vale do Taquari,RF2,2
+4321329,Taquaruçu do Sul,Taquaruçu do Sul (RS),Médio Alto Uruguai,RF9,9
+4321352,Tavares,Tavares (RS),Sul,RF5,5
+4321402,Tenente Portela,Tenente Portela (RS),Celeiro,RF7,7
+4321436,Terra de Areia,Terra de Areia (RS),Litoral,RF4,4
+4321451,Teutônia,Teutônia (RS),Vale do Taquari,RF2,2
+4321469,Tio Hugo,Tio Hugo (RS),Alto da Serra do Botucaraí,RF9,9
+4321477,Tiradentes do Sul,Tiradentes do Sul (RS),Celeiro,RF7,7
+4321493,Toropi,Toropi (RS),Central,RF8,8
+4321501,Torres,Torres (RS),Litoral,RF4,4
+4321600,Tramandaí,Tramandaí (RS),Litoral,RF4,4
+4321626,Travesseiro,Travesseiro (RS),Vale do Taquari,RF2,2
+4321634,Três Arroios,Três Arroios (RS),Norte,RF9,9
+4321667,Três Cachoeiras,Três Cachoeiras (RS),Litoral,RF4,4
+4321709,Três Coroas,Três Coroas (RS),Paranhana Encosta da Serra,RF1,1
+4321808,Três de Maio,Três de Maio (RS),Fronteira Noroeste,RF7,7
+4321832,Três Forquilhas,Três Forquilhas (RS),Litoral,RF4,4
+4321857,Três Palmeiras,Três Palmeiras (RS),Rio da Várzea,RF9,9
+4321907,Três Passos,Três Passos (RS),Celeiro,RF7,7
+4321956,Trindade do Sul,Trindade do Sul (RS),Médio Alto Uruguai,RF9,9
+4322004,Triunfo,Triunfo (RS),Metropolitano Delta do Jacuí,RF1,1
+4322103,Tucunduva,Tucunduva (RS),Fronteira Noroeste,RF7,7
+4322152,Tunas,Tunas (RS),Vale do Rio Pardo,RF2,2
+4322186,Tupanci do Sul,Tupanci do Sul (RS),Nordeste,RF9,9
+4322202,Tupanciretã,Tupanciretã (RS),Central,RF8,8
+4322251,Tupandi,Tupandi (RS),Vale do Caí,RF1,1
+4322301,Tuparendi,Tuparendi (RS),Fronteira Noroeste,RF7,7
+4322327,Turuçu,Turuçu (RS),Sul,RF5,5
+4322343,Ubiretama,Ubiretama (RS),Missões,RF7,7
+4322350,União da Serra,União da Serra (RS),Serra,RF3,3
+4322376,Unistalda,Unistalda (RS),Vale do Jaguari,RF8,8
+4322400,Uruguaiana,Uruguaiana (RS),Fronteira Oeste,RF6,6
+4322509,Vacaria,Vacaria (RS),Campos de Cima da Serra,RF3,3
+4322525,Vale Verde,Vale Verde (RS),Vale do Rio Pardo,RF2,2
+4322533,Vale do Sol,Vale do Sol (RS),Vale do Rio Pardo,RF2,2
+4322541,Vale Real,Vale Real (RS),Vale do Caí,RF1,1
+4322558,Vanini,Vanini (RS),Produção,RF9,9
+4322608,Venâncio Aires,Venâncio Aires (RS),Vale do Rio Pardo,RF2,2
+4322707,Vera Cruz,Vera Cruz (RS),Vale do Rio Pardo,RF2,2
+4322806,Veranópolis,Veranópolis (RS),Serra,RF3,3
+4322855,Vespasiano Correa,Vespasiano Correa (RS),Vale do Taquari,RF2,2
+4322905,Viadutos,Viadutos (RS),Norte,RF9,9
+4323002,Viamão,Viamão (RS),Metropolitano Delta do Jacuí,RF1,1
+4323101,Vicente Dutra,Vicente Dutra (RS),Médio Alto Uruguai,RF9,9
+4323200,Victor Graeff,Victor Graeff (RS),Alto da Serra do Botucaraí,RF9,9
+4323309,Vila Flores,Vila Flores (RS),Serra,RF3,3
+4323358,Vila Lângaro,Vila Lângaro (RS),Nordeste,RF9,9
+4323408,Vila Maria,Vila Maria (RS),Produção,RF9,9
+4323457,Vila Nova do Sul,Vila Nova do Sul (RS),Jacuí Centro,RF8,8
+4323507,Vista Alegre,Vista Alegre (RS),Médio Alto Uruguai,RF9,9
+4323606,Vista Alegre do Prata,Vista Alegre do Prata (RS),Serra,RF3,3
+4323705,Vista Gaúcha,Vista Gaúcha (RS),Celeiro,RF7,7
+4323754,Vitória das Missões,Vitória das Missões (RS),Missões,RF7,7
+4323770,Westfália,Westfália (RS),Vale do Taquari,RF2,2
+4323804,Xangri-lá,Xangri-lá (RS),Litoral,RF4,4

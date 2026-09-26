@@ -1,1 +1,6 @@
 .DS_Store
+# Dados baixados e derivados dos notebooks de aquisicao geografica.
+# Os notebooks recriam tudo a partir das fontes oficiais e gravam a
+# procedencia (URL + SHA-256 + data) nos arquivos .fonte.json, entao nao
+# ha motivo para versionar dezenas de MB de shapefile, GeoPackage e HTML.
+AI001-analise-visualizacao-dados/educacao_rs/atividade02_lucas/dados/
