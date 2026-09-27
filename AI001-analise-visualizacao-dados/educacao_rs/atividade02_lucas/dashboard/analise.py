@@ -62,11 +62,46 @@ CLASSES_P4 = [
 ]
 
 # Paletas das figuras da Atividade 01, para manter a continuidade visual.
-CORES_RESIDUO = ["#2166ac", "#a8c8e4", "#f6b48a", "#b2400a"]
-CORES_QUARTIL = ["#c6dbef", "#6baed6", "#2171b5", "#08306b"]
-CORES_QUINTIL = ["#fee8c8", "#fdbb84", "#fc8d59", "#e34a33", "#8c2d04"]
+# ---------------------------------------------------------------
+# Paleta dos mapas
+# ---------------------------------------------------------------
+# Uma cor base por pergunta. As quatro nunca aparecem juntas — cada pergunta é
+# uma página — mas foram escolhidas como conjunto e verificadas par a par, em
+# visão normal e sob simulação de protanopia e deuteranopia, para que trocar de
+# pergunta seja uma mudança perceptível e não uma variação de tom.
+#
+# Só os MAPAS seguem estas cores. Os gráficos da Atividade 01 continuam com as
+# cores originais do notebook, de propósito: eles existem para corresponder ao
+# trabalho anterior, e mudá-los quebraria essa correspondência.
+CORES_BASE = {
+    "P1": "#2a78d6",   # azul
+    "P2": "#eb6834",   # laranja
+    "P3": "#1baf7a",   # aqua
+    "P4": "#4a3aa7",   # violeta
+}
+
+# Toda escala de mapa é uma RAMPA SEQUENCIAL de um tom só, do claro ao escuro,
+# no matiz da pergunta. Matizes diferentes anunciariam categorias sem ordem;
+# aqui quem diz "mais" e "menos" é a luminosidade, que sobrevive à impressão em
+# cinza e a qualquer daltonismo.
+#
+# O passo mais claro fica em 2:1 contra o fundo do mapa: abaixo disso a classe
+# some na superfície e passa a se confundir com o cinza de "sem dado".
+CORES_RESIDUO = {
+    "P1": ["#8db5eb", "#5c8fd1", "#2a69b7", "#00458e"],   # abaixo → acima
+    "P4": ["#acadee", "#8684d3", "#625bb8", "#422f9c"],   # abaixo → acima
+}
+CORES_QUARTIL = ["#eba186", "#cd7352", "#ae4417", "#7c2800"]            # P2, Q1 → Q4
+CORES_QUINTIL = ["#82bfa1", "#5aa683", "#2c8d66", "#00724d", "#005639"]  # P3, 1º → 5º
+
+# Escala dos gráficos da Atividade 01 — NÃO mexer: é a rampa do notebook.
 CORES_FAIXAS = ["#86b6ef", "#5598e7", "#2a78d6", "#256abf", "#184f95", "#0d366b"]
-COR_SEM_DADO = "#d9d9d9"
+
+# Clareado de #d9d9d9 para cá: contra as rampas novas, o cinza antigo ficava a
+# ΔE 14,7 do passo mais claro — abaixo do piso de 15 em que duas cores param de
+# ser distinguíveis mesmo com visão de cor completa. Como o tom novo recua para
+# perto da superfície, o município sem dado ganha um traço escuro no mapa.
+COR_SEM_DADO = "#e4e3e0"
 COR_FORA = "#ecebe6"
 COR_DESTAQUE = "#eb6834"
 

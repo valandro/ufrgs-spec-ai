@@ -36,6 +36,42 @@ renda dos moradores com a produção local. O dashboard a marca com o selo "novi
 
 Bibliotecas de visualização: **Folium** (mapa) e **Matplotlib** (gráficos da Atividade 01).
 
+## Cores dos mapas
+
+Cada pergunta pinta o seu mapa numa **cor base própria** — azul na 1, laranja na 2,
+aqua na 3, violeta na 4 — e trocar de pergunta troca a cor do mapa inteiro. As
+quatro foram escolhidas como conjunto e verificadas par a par, em visão normal e
+sob simulação de protanopia e deuteranopia.
+
+As quatro escalas são **rampas sequenciais de um tom só**, do claro ao escuro:
+
+| Pergunta | Escala | Do claro ao escuro |
+|---|---|---|
+| 1 | resíduo em relação à escolaridade | abaixo → acima do esperado |
+| 2 | quartil de escolaridade | Q1 → Q4 |
+| 3 | quintil de renda | 1º → 5º quintil |
+| 4 | resíduo em relação ao PIB per capita | abaixo → acima do esperado |
+
+Matizes diferentes dentro de uma escala anunciariam categorias sem ordem. Numa rampa
+de um tom quem diz "mais" e "menos" é a luminosidade, que sobrevive à impressão em
+cinza e a qualquer daltonismo. O passo mais claro fica em 2:1 contra o fundo, para
+não sumir na superfície.
+
+Duas consequências que vale conhecer:
+
+- **As escalas de resíduo perderam o meio neutro.** Elas são divergentes por
+  natureza — o resíduo tem sinal, e zero fica entre a 2ª e a 3ª classe. Numa rampa de
+  um tom, "muito abaixo" e "muito acima" viram as duas pontas de uma mesma grandeza.
+  Quem carrega o sinal agora é o rótulo de cada classe, que diz a direção em palavras.
+- **O cinza de "sem dado" clareou** de `#d9d9d9` para `#e4e3e0`: contra as rampas
+  novas, o tom antigo ficava perto demais do passo mais claro. Como o tom novo recua
+  para perto da superfície, o município sem dado ganhou um traço escuro no mapa.
+
+**Os gráficos da Atividade 01 não seguem esta paleta.** Eles mantêm as cores originais
+do notebook de propósito: existem para corresponder ao trabalho anterior, e recolori-los
+quebraria essa correspondência. Numa mesma página, portanto, mapa e gráfico podem usar
+matizes diferentes — é intencional, e o selo de cada bloco diz de qual atividade ele vem.
+
 ## Controles
 
 1. **Pergunta** — escolhe o que pinta o mapa e qual gráfico aparece.

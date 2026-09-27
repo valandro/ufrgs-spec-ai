@@ -33,18 +33,18 @@ ENUNCIADOS = {
 }
 COMO_LER = {
     "P1": ("O mapa mostra quanto a renda de cada município se afasta da **renda esperada pela "
-           "escolaridade** (a reta do gráfico 6.1). Tons laranja: ganha mais do que a escolaridade "
-           "sugere; azuis: ganha menos. Os tons fortes passam de 1 desvio-padrão — são os casos a "
-           "investigar dentro de cada COREDE."),
+           "escolaridade** (a reta do gráfico 6.1). Quanto mais escuro, mais o município paga acima "
+           "do que a escolaridade sugere; os tons claros ganham menos do que o esperado. As duas "
+           "pontas passam de 1 desvio-padrão — são os casos a investigar dentro de cada COREDE."),
     "P2": ("O mapa pinta cada município pelo **quartil de escolaridade** dos ocupados — os mesmos "
            "quartis do gráfico 6.2.1, com limites calculados sobre o estado inteiro."),
     "P3": ("O mapa pinta a **renda em quintis**. Os anéis marcam 100, 200 e 300 km de Porto "
            "Alegre: se a proximidade explicasse a renda, os tons escuros se concentrariam no "
-           "centro. Contornos: Metropolitana (azul) e Serra e Hortênsias (verde)."),
+           "centro. Contornos: Metropolitana (traço cheio) e Serra e Hortênsias (tracejado)."),
     "P4": ("O mapa mostra quanto a renda se afasta da **renda esperada pelo PIB per capita**. "
-           "Azul forte: produz muito e a renda não fica com os residentes; laranja forte: ganha "
-           "muito mais do que produz. Contorno preto: os municípios do tercil inferior de PIB com "
-           "renda acima do esperado."),
+           "Quanto mais escuro, mais a renda supera o que o PIB per capita faria esperar; os tons "
+           "claros produzem muito e a renda não fica com os residentes. Contorno preto: os "
+           "municípios do tercil inferior de PIB com renda acima do esperado."),
 }
 # Origem de cada mapa: P1 e P2 não tinham mapa na Atividade 01; P3 e P4 tinham um
 # mapa estático em matplotlib, que aqui vira interativo.
@@ -197,10 +197,15 @@ def cores_e_legenda():
     if pergunta in ("P1", "P4"):
         classes = an.CLASSES_P1 if pergunta == "P1" else an.CLASSES_P4
         coluna = "classe_p1" if pergunta == "P1" else "classe_p4"
-        mapa_cor = dict(zip(classes, an.CORES_RESIDUO))
+        # Rampa sequencial na cor base da pergunta, do claro (abaixo do
+        # esperado) ao escuro (acima). A escala não tem meio neutro: quem
+        # carrega o sinal do resíduo é o rótulo de cada classe, que diz a
+        # direção em palavras.
+        escala = an.CORES_RESIDUO[pergunta]
+        mapa_cor = dict(zip(classes, escala))
         cores = mun[coluna].astype(object).map(mapa_cor)
         dp = modelos.p1_dp if pergunta == "P1" else modelos.p4_dp
-        legenda = list(zip(an.CORES_RESIDUO, classes))
+        legenda = list(zip(escala, classes))
         titulo = f"Renda observada − esperada (1 dp = {an.reais(dp)})"
     elif pergunta == "P2":
         cores = mun["quartil_esc"].astype(object).map(dict(zip(an.QUARTIS, an.CORES_QUARTIL)))
@@ -310,8 +315,13 @@ def montar_mapa(cores):
     campos = [c for c in camada.columns if c not in ("cor", "geometry")]
     folium.GeoJson(
         camada.__geo_interface__, name="Municípios",
-        style_function=lambda f: {"fillColor": f["properties"]["cor"], "color": "white",
-                                  "weight": 0.4, "fillOpacity": 0.92},
+        # O cinza de "sem dado" recua de propósito para não competir com o
+        # passo mais claro da rampa, então ganha um traço escuro: a distinção
+        # não pode depender só da cor de preenchimento.
+        style_function=lambda f: {
+            "fillColor": f["properties"]["cor"], "fillOpacity": 0.92,
+            "color": "#8a8a86" if f["properties"]["cor"] == an.COR_SEM_DADO else "white",
+            "weight": 1.2 if f["properties"]["cor"] == an.COR_SEM_DADO else 0.4},
         highlight_function=lambda _: {"weight": 2.2, "color": "#1a1a1a"},
         tooltip=folium.GeoJsonTooltip(
             fields=campos, aliases=[f"{c}:" for c in campos], sticky=True,
@@ -325,11 +335,15 @@ def montar_mapa(cores):
     ).add_to(mapa)
 
     if pergunta == "P3":
-        contornos = {1: "#08306b", 3: "#00441b"}
-        for rf_id, cor in contornos.items():
+        # Contorno em tinta neutra, e não colorido: o mapa inteiro já é uma
+        # rampa de um matiz, e um contorno com cor competiria com a escala de
+        # valor. O que separa as duas regiões é o traço — cheio e tracejado.
+        contornos = {1: None, 3: "7 4"}
+        for rf_id, tracejado in contornos.items():
             folium.GeoJson(
                 regioes.loc[regioes["regiao_funcional_id"] == rf_id, ["geometry"]].__geo_interface__,
-                style_function=lambda _, c=cor: {"fillOpacity": 0, "color": c, "weight": 3},
+                style_function=lambda _, d=tracejado: {
+                    "fillOpacity": 0, "color": "#0b0b0b", "weight": 2.6, "dashArray": d},
                 interactive=False,
             ).add_to(mapa)
         lat, lon = modelos.centro_poa
@@ -345,7 +359,7 @@ def montar_mapa(cores):
         folium.Marker(
             [lat, lon],
             icon=folium.DivIcon(html=(
-                '<div style="font:bold 12px sans-serif;color:#08306b;white-space:nowrap;'
+                '<div style="font:bold 12px sans-serif;color:#0b0b0b;white-space:nowrap;'
                 'transform:translate(-8px,-12px)">★ Porto Alegre</div>')),
         ).add_to(mapa)
 
@@ -381,7 +395,9 @@ def legenda_html(itens, titulo, extras=()):
 cores, itens_legenda, titulo_legenda = cores_e_legenda()
 extras = [("2px solid #2b2b2b", "Fronteira de Região Funcional")]
 if pergunta == "P3":
-    extras += [("3px solid #08306b", "RF1 · Metropolitana"), ("3px solid #00441b", "RF3 · Serra e Hortênsias"),
+    # Mesma tinta nas duas: o que as separa é o traço, como no mapa.
+    extras += [("2.6px solid #0b0b0b", "RF1 · Metropolitana"),
+               ("2.6px dashed #0b0b0b", "RF3 · Serra e Hortênsias"),
                ("1.5px dashed #52514e", "100, 200 e 300 km de Porto Alegre")]
 if pergunta == "P4":
     extras += [("2.5px solid #0b0b0b", "Tercil inferior de PIB com renda acima do esperado")]
