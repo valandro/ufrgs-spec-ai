@@ -26,7 +26,7 @@ com a sua origem:
 |---|---|---|---|
 | 1 | Municípios onde mais ocupados têm ensino médio completo pagam melhor? | Novo: renda observada − esperada pela escolaridade, em 4 classes de ±1 desvio-padrão | 6.1 — dispersão com reta e r de Pearson |
 | 2 | Como muda a distribuição de faixas de renda conforme o nível de escolaridade do município? | Novo: quartil de escolaridade | 6.2.1 — barras 100% empilhadas por quartil de escolaridade |
-| 3 | A proximidade da capital explica o rendimento, ou há regiões não metropolitanas com rendimento equivalente ou superior? | Versão interativa do mapa 6.3.3: quintis de renda, anéis de 100/200/300 km, contornos da RF1 e da RF3 | 6.3.2 — caixas por Região Funcional |
+| 3 | A proximidade da capital explica o rendimento, ou há regiões não metropolitanas com rendimento equivalente ou superior? | Versão interativa do mapa 6.3.3: quintis de renda, anéis de 100/200/300 km, contornos da RF1 e da RF3 | 6.3.2 — um ponto por município e o traço da mediana, por Região Funcional |
 | 4 ✨ | Existem municípios cuja renda é incompatível com a produção local, e o que distingue os de PIB igualmente baixo? | Versão interativa do mapa 6.4.4: resíduo em relação ao PIB, contorno nos 13 municípios de PIB baixo e renda acima do esperado | 6.4.2 — dispersão PIB × renda; 6.4.3 — os dois grupos do tercil inferior de PIB |
 
 **A pergunta 4 é uma novidade.** Ela não estava entre as três perguntas da proposta

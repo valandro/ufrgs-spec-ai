@@ -150,11 +150,22 @@ def grafico_6_2(sel, modelos, filtrado):
 
 # ---------------------------------------------------------------------------
 # 6.3.2 — Pergunta 3
+#
+# Diferença deliberada em relação ao notebook: lá a seção 6.3.2 desenha um
+# boxplot, aqui cada município é um ponto e a região recebe apenas o traço da
+# mediana. Os dados são os mesmos — os 496 municípios com rendimento em 2010.
+#
+# O que se ganha: a quantidade real de municípios por região fica visível (de
+# 20 na RF6 a 130 na RF9), e as caudas aparecem como pontos, não como bigodes.
+# O que se perde: os quartis, que o boxplot mostrava de graça. Quem precisar
+# deles encontra a tabela por região logo abaixo do gráfico.
 # ---------------------------------------------------------------------------
 def grafico_6_3(mun, selecao, rfs):
-    """Renda por Região Funcional: caixa + um ponto por município, RF1 em destaque."""
+    """Renda por Região Funcional: um ponto por município e o traço da mediana."""
     COR_METRO = "#eb6834"
     COR_DEMAIS = "#2a78d6"
+    COR_TEXTO = "#52514e"
+
     base = mun[mun[RENDA].notna()]
     dentro = selecao[base.index]
     resumo = base.groupby("regiao_funcional")[RENDA].agg(n="size", mediana="median")
@@ -165,23 +176,30 @@ def grafico_6_3(mun, selecao, rfs):
 
     fig = Figure(figsize=(11, 6.8))
     ax = fig.subplots()
+
     for i, nome_rf in enumerate(ordem):
         da_rf = base["regiao_funcional"] == nome_rf
         valores = base.loc[da_rf, RENDA]
         cor = COR_METRO if nome_rf.startswith("RF1") else COR_DEMAIS
         if nome_rf not in rfs:
             cor = COR_FORA
-        ax.boxplot([valores], positions=[i], vert=False, widths=0.62, showfliers=False,
-                   patch_artist=True,
-                   boxprops=dict(facecolor="white", edgecolor=cor, linewidth=1.3),
-                   medianprops=dict(color=cor, linewidth=2.6),
-                   whiskerprops=dict(color=cor, linewidth=1.1),
-                   capprops=dict(color=cor, linewidth=1.1))
-        y = i + rng_jitter.uniform(-0.17, 0.17, len(valores))
-        cores_pontos = np.where(dentro[da_rf].to_numpy(), cor, COR_FORA)
-        alfas = np.where(dentro[da_rf].to_numpy(), 0.35, 0.25)
-        ax.scatter(valores, y, s=11, c=cores_pontos, alpha=alfas, edgecolors="none", zorder=3)
-        ax.annotate(_reais(valores.median()), xy=(valores.median(), i + 0.40), ha="center",
+
+        # Jitter vertical só para separar pontos de valor próximo. Com até 130
+        # municípios numa linha, marcador pequeno e transparência importam mais
+        # que contorno: a sobreposição é que mostra onde a região se concentra.
+        y = i + rng_jitter.uniform(-0.22, 0.22, len(valores))
+        no_filtro = dentro[da_rf].to_numpy()
+        ax.scatter(valores, y, s=16,
+                   c=np.where(no_filtro, cor, COR_FORA),
+                   alpha=np.where(no_filtro, 0.5, 0.3),
+                   edgecolors="none", zorder=3)
+
+        # A mediana é sempre a de TODOS os municípios da região, como na
+        # Atividade 01; o filtro só muda quais pontos ficam coloridos.
+        mediana = resumo.loc[nome_rf, "mediana"]
+        ax.plot([mediana, mediana], [i - 0.34, i + 0.34], color=cor,
+                linewidth=2.8, solid_capstyle="butt", zorder=4)
+        ax.annotate(_reais(mediana), xy=(mediana, i + 0.42), ha="center",
                     fontsize=8.5, color=cor, fontweight="bold")
 
     mediana_estado = base[RENDA].median()
@@ -189,6 +207,7 @@ def grafico_6_3(mun, selecao, rfs):
     ax.annotate(f"mediana do estado: {_reais(mediana_estado)}", xy=(mediana_estado, -0.78),
                 xytext=(8, 0), textcoords="offset points", fontsize=8.5, color="#8a8a86",
                 va="center")
+
     ax.set_yticks(range(len(ordem)))
     ax.set_yticklabels([f"{nome}  (n={resumo.loc[nome, 'n']})" for nome in ordem], fontsize=9.5)
     ax.set_ylim(-1.15, len(ordem) - 0.35)
@@ -196,21 +215,27 @@ def grafico_6_3(mun, selecao, rfs):
     ax.set_title("A proximidade da capital explica o rendimento?\n"
                  f"Os {len(base)} municípios do RS por Região Funcional de Planejamento — "
                  f"a metropolitana é a {posicao_rf1}ª de {len(resumo)}", fontsize=13, pad=12)
+
     ax.spines[["top", "right", "left"]].set_visible(False)
     ax.tick_params(axis="y", length=0)
     ax.grid(axis="x", linestyle="-", linewidth=0.5, color="#e5e5e0", zorder=0)
     ax.set_axisbelow(True)
+
     ax.legend(handles=[
-        Line2D([], [], color=COR_METRO, linewidth=2.6, label="Região Funcional 1 (metropolitana)"),
-        Line2D([], [], color=COR_DEMAIS, linewidth=2.6, label="Demais Regiões Funcionais"),
+        Line2D([], [], marker="o", linestyle="", color=COR_METRO, markersize=7,
+               label="Região Funcional 1 (metropolitana)"),
+        Line2D([], [], marker="o", linestyle="", color=COR_DEMAIS, markersize=7,
+               label="Demais Regiões Funcionais"),
+        Line2D([], [], color=COR_TEXTO, linewidth=2.8, label="Mediana da região"),
     ], frameon=False, loc="lower right", fontsize=9)
+
     filtrado = not dentro.all()
     fig.text(0.01, 0.005,
              "Fontes: Atlas do Desenvolvimento Humano no Brasil (Pnud, Ipea, FJP), Censo 2010 (IBGE); "
              "Regiões Funcionais de Planejamento — Decreto 54.572/2019 (SEPLAG-RS).\n"
-             "Caixa = 1º ao 3º quartil; linha grossa = mediana; cada ponto é um município. "
-             "Outliers omitidos da caixa para não duplicar os pontos já desenhados."
-             + ("\nCaixas e medianas de cada região com todos os seus municípios; em cinza, "
+             "Cada ponto é um município; o traço vertical é a mediana da região. "
+             "O jitter vertical é só para separar pontos de valor próximo — a altura não tem significado."
+             + ("\nMedianas de cada região com todos os seus municípios; em cinza, "
                 "regiões e municípios fora da seleção." if filtrado else ""),
              fontsize=8, color="#8a8a86")
     fig.tight_layout(rect=(0, 0.08 if filtrado else 0.06, 1, 1))

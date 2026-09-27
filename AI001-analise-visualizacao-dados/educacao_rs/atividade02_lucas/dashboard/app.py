@@ -421,6 +421,13 @@ st.caption("Passe o mouse sobre um município para ver os valores. Em cinza-clar
 NOTA_A01 = ("Mesmo gráfico de `atividade01_dados_pib_2010.ipynb`, redesenhado com os dados do "
             "dashboard. As estatísticas continuam calculadas sobre os 496 municípios; os filtros "
             "só destacam a seleção (em cinza, o que está fora dela).")
+# O 6.3.2 usa os mesmos dados do notebook, mas outro desenho: pontos e traço de
+# mediana no lugar do boxplot. Os números são os mesmos; o que muda é o que a
+# figura mostra de imediato — o n de cada região em vez dos quartis.
+NOTA_632 = ("Mesmos dados da seção 6.3.2 de `atividade01_dados_pib_2010.ipynb` — os 496 municípios "
+            "com rendimento em 2010 — em outro desenho: cada ponto é um município e o traço "
+            "vertical é a mediana da região, no lugar do boxplot do notebook. As medianas e a "
+            "ordem das regiões são idênticas; os filtros só destacam a seleção.")
 filtrado = len(sel) < modelos.n
 if pergunta == "P1":
     secao("6.1 — Escolaridade × rendimento", selo_atividade01("6.1"), "blue", NOTA_A01)
@@ -436,7 +443,7 @@ elif pergunta == "P2":
         st.caption("Atenção: há quartil com menos de 5 municípios na seleção — a média dele é instável.")
 
 elif pergunta == "P3":
-    secao("6.3.2 — Renda por Região Funcional", selo_atividade01("6.3.2"), "blue", NOTA_A01)
+    secao("6.3.2 — Renda por Região Funcional", selo_atividade01("6.3.2"), "blue", NOTA_632)
     st.pyplot(g1.grafico_6_3(mun, selecao, rfs), width="content")
 else:
     secao("6.4.2 — Quem foge do padrão produção → renda", selo_atividade01("6.4.2"), "blue", NOTA_A01)
