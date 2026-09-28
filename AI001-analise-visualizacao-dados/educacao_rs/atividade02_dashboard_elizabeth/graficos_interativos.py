@@ -15,6 +15,81 @@ import analise as an
 FAIXAS_TEXTO_BRANCO = ("Mais de 2 até 3 SM", "Mais de 3 até 5 SM", "Mais de 5 SM")
 
 
+# ---------------------------------------------------------------------------
+# Pergunta 1 — escolaridade × rendimento
+#
+# Adaptado do dashboard de `educacao/tarefa_02`: mesma dispersão, mesma reta de
+# tendência, mesmo destaque de Porto Alegre e o mesmo tooltip.
+#
+# Uma diferença deliberada: lá a reta era reajustada a cada filtro; aqui ela é a
+# do estado inteiro, vinda de `calcular()`. É a regra do dashboard — os cortes
+# não mudam com o filtro — e sem ela a reta contradiria o mapa e a tabela desta
+# mesma página, que medem o resíduo contra a reta dos 496 municípios.
+# ---------------------------------------------------------------------------
+CORES_P1 = {
+    "Municípios": "#6fa3cc",
+    "Porto Alegre": "#168542",
+    "Reta de tendência": "#a31313",
+}
+TOOLTIP_P1 = [
+    alt.Tooltip("NM_MUN:N", title="Município"),
+    alt.Tooltip("corede:N", title="COREDE"),
+    alt.Tooltip("regiao_funcional:N", title="Região Funcional"),
+    alt.Tooltip("faixa_renda_sm:N", title="Faixa de renda"),
+    alt.Tooltip(f"{an.ESCOLARIDADE}:Q", title="Ensino médio (%)", format=".1f"),
+    alt.Tooltip(f"{an.RENDA}:Q", title="Renda (R$)", format=",.0f"),
+]
+EIXO_X_P1 = alt.X(f"{an.ESCOLARIDADE}:Q", title="Ocupados com ensino médio completo em 2010 (%)",
+                  scale=alt.Scale(zero=False, nice=False, padding=12))
+EIXO_Y_P1 = alt.Y(f"{an.RENDA}:Q", title="Rendimento médio dos ocupados (R$)",
+                  scale=alt.Scale(zero=False, nice=False, padding=12))
+
+
+def dispersao_escolaridade_renda(sel, modelos, destacar_poa=True):
+    """Dispersão escolaridade × renda, com reta de tendência e Porto Alegre em destaque.
+
+    `sel`: municípios da seleção, já filtrados pela página.
+    `modelos`: de onde vêm a inclinação e o intercepto da reta do estado.
+    `destacar_poa`: desenha Porto Alegre maior e em outra cor, quando ela está
+    na seleção.
+    """
+    dados = sel.copy()
+    dados["faixa_renda_sm"] = dados[an.RENDA].map(an.faixa_renda_sm)
+
+    e_poa = dados["NM_MUN"].eq("Porto Alegre") if destacar_poa else pd.Series(False, index=dados.index)
+    municipios = dados.loc[~e_poa].assign(tipo="Municípios")
+    poa = dados.loc[e_poa].assign(tipo="Porto Alegre")
+
+    # A reta é a do estado (496 municípios), desenhada só até onde a seleção vai.
+    x0, x1 = float(dados[an.ESCOLARIDADE].min()), float(dados[an.ESCOLARIDADE].max())
+    reta = pd.DataFrame({
+        an.ESCOLARIDADE: [x0, x1],
+        an.RENDA: [modelos.p1_intercepto + modelos.p1_inclinacao * x
+                   for x in (x0, x1)],
+        "tipo": "Reta de tendência",
+    })
+
+    # A legenda só lista o que está desenhado: sem Porto Alegre na seleção, a
+    # entrada dela não aparece.
+    presentes = ["Municípios"] + (["Porto Alegre"] if not poa.empty else []) + ["Reta de tendência"]
+    cor = alt.Color("tipo:N", title="Elementos do gráfico",
+                    scale=alt.Scale(domain=presentes, range=[CORES_P1[t] for t in presentes]),
+                    legend=alt.Legend(orient="top", direction="horizontal"))
+
+    camadas = [
+        alt.Chart(municipios).mark_circle(size=55, opacity=0.65).encode(
+            x=EIXO_X_P1, y=EIXO_Y_P1, color=cor, tooltip=TOOLTIP_P1),
+        alt.Chart(reta).mark_line(size=3).encode(x=EIXO_X_P1, y=EIXO_Y_P1, color=cor),
+    ]
+    if not poa.empty:
+        # Depois da reta, para o marcador da capital não ficar por baixo dela.
+        camadas.append(alt.Chart(poa).mark_circle(size=180, opacity=1).encode(
+            x=EIXO_X_P1, y=EIXO_Y_P1, color=cor, tooltip=TOOLTIP_P1))
+
+    return alt.layer(*camadas).properties(height=460).configure_axis(
+        grid=True, gridColor="#e5e5e0")
+
+
 def faixas_por_grupo(sel, modelos, agrupamento=an.AGRUPAMENTO_PADRAO):
     """Barras 100% empilhadas das faixas de renda por grupo de escolaridade (pergunta 2).
 

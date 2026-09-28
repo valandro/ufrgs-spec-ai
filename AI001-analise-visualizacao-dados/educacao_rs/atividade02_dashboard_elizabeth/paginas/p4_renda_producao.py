@@ -10,7 +10,7 @@ from analise import PIB, POPULACAO, RENDA
 
 NOVIDADE = (
     "**Novidade.** Esta pergunta não estava entre as três perguntas da proposta original da "
-    "Atividade 01. Ela foi acrescentada em `atividade01_dados_pib_2010.ipynb` com um terceiro "
+    "Atividade 01. Ela foi acrescentada com um terceiro "
     "conjunto de dados — o **PIB dos municípios de 2010 (IBGE)**, que traz PIB per capita, "
     "população e valor adicionado por setor — e é a única que cruza a renda dos moradores com a "
     "produção local.")
@@ -70,7 +70,7 @@ def contorno_destaque(mapa):
 comum.secao_mapa(
     ctx, selecao, cores, list(zip(escala, an.CLASSES_P4)),
     f"Renda observada − esperada (1 dp = {an.reais(m.p4_dp)})", tooltip,
-    origem="Versão interativa do mapa 6.4.4 da Atividade 01",
+    origem="Versão interativa do mapa",
     como_ler=("O mapa mostra quanto a renda se afasta da **renda esperada pelo PIB per capita**. "
               "Quanto mais escuro, mais a renda supera o que o PIB per capita faria esperar; os "
               "tons claros produzem muito e a renda não fica com os residentes. Contorno preto: os "
@@ -78,12 +78,13 @@ comum.secao_mapa(
     extras_legenda=[("2.5px solid #0b0b0b", "Tercil inferior de PIB com renda acima do esperado")],
     camadas_extras=contorno_destaque)
 
-comum.secao("6.4.2 — Quem foge do padrão produção → renda",
-            comum.selo_atividade01("6.4.2", novidade=True), "blue", comum.NOTA_A01)
-st.pyplot(g1.grafico_6_4_2(ctx.mun, m, selecao), width="content")
-comum.secao("6.4.3 — O que distingue os de renda alta entre os de PIB baixo",
-            comum.selo_atividade01("6.4.3", novidade=True), "blue", comum.NOTA_A01)
-st.pyplot(g1.grafico_6_4_3(ctx.mun, m, selecao, ctx.p_valores_p4), width="content")
+# comum.secao("Quem foge do padrão produção → renda",
+#             comum.selo_atividade01(novidade=True), "blue", comum.NOTA_A01)
+# st.pyplot(g1.grafico_pib_renda(ctx.mun, m, selecao), width="content")
+
+# comum.secao("O que distingue os de renda alta entre os de PIB baixo",
+#             comum.selo_atividade01(novidade=True), "blue", comum.NOTA_A01)
+# st.pyplot(g1.grafico_tercil_inferior(ctx.mun, m, selecao, ctx.p_valores_p4), width="content")
 
 comum.tabela(
     sel,

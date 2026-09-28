@@ -25,7 +25,7 @@ comum.cartoes(ctx, sel, [
      "média municipal"),
 ])
 
-# Controle próprio desta página: vale para o gráfico 6.2.1 e para o mapa, logo abaixo.
+# Controle próprio desta página: vale para o gráfico de faixas e para o mapa, logo abaixo.
 st.write("")
 agrupamento = st.segmented_control(
     "Agrupar os municípios pela escolaridade em", list(an.AGRUPAMENTOS),
@@ -40,8 +40,8 @@ lim = m.p2_limites[agrupamento]
 filtrado = len(sel) < m.n
 nome_grupo = ag["singular"].lower()   # "tercil", "quartil", "quintil"
 comum.secao(
-    f"6.2.1 — Faixas de renda por {nome_grupo} de escolaridade (resposta da pergunta 2)",
-    comum.selo_atividade01("6.2.1") + " · versão interativa", "blue",
+    f"Faixas de renda por {nome_grupo} de escolaridade",
+    "Atividade 02" + " · versão interativa", "blue",
     f"Os municípios são ordenados pelo % de ocupados com ensino médio completo e divididos em "
     f"{ag['n']} grupos com o mesmo número de municípios ({agrupamento.lower()}, cerca de "
     f"{m.n // ag['n']} em cada). Cada barra mostra como os ocupados de um grupo se distribuem pelas "
@@ -135,7 +135,7 @@ with st.expander("Tercis, quartis ou quintis: o que muda ao trocar?", icon=":mat
 # ---------------------------------------------------------------------------
 comum.secao(
     "Quem foge do padrão?", "Atividade 02 · novo nesta atividade", "green",
-    "O gráfico 6.2.1 mostra médias de grupos; aqui cada município aparece sozinho. A curva "
+    "O gráfico acima mostra médias de grupos; aqui cada município aparece sozinho. A curva "
     "tracejada é a fatia **esperada** para cada nível de escolaridade, ajustada sobre os 496 "
     "municípios; a faixa cinza vai de −1 a +1 desvio-padrão em torno dela. Quem está fora da "
     "faixa tem muito mais (ou muito menos) ocupados na faixa escolhida do que a escolaridade do "
@@ -195,7 +195,7 @@ comum.secao_mapa(
     f"Ocupados com ensino médio completo ({agrupamento.lower()} do RS)", tooltip,
     origem="Novo nesta atividade",
     como_ler=("O mapa pinta cada município pelo **grupo de escolaridade** dos ocupados — os mesmos "
-              "grupos do gráfico 6.2.1, acima, com limites calculados sobre o estado inteiro."))
+              "grupos do gráfico de faixas, acima, com limites calculados sobre o estado inteiro."))
 
 tabela_p2 = sel.join(af[["observado", "esperado", "diferenca"]])
 titulos_alvo = {"observado": f"{rotulo_alvo} (%)", "esperado": "Esperado (%)",

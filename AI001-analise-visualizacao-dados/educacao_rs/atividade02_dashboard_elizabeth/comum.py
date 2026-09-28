@@ -26,9 +26,9 @@ LIMITACOES = (
     "indivíduos) e cada município pesa 1, independente da população; Pinto Bandeira, emancipado em "
     "2013, não tem dado de 2010; a distância é em linha reta entre centroides, não tempo de "
     "deslocamento.")
-NOTA_A01 = ("Mesmo gráfico de `atividade01_dados_pib_2010.ipynb`, redesenhado com os dados do "
-            "dashboard. As estatísticas continuam calculadas sobre os 496 municípios; os filtros "
-            "só destacam a seleção (em cinza, o que está fora dela).")
+NOTA_A01 = ("Mesmo gráfico da Atividade 01, redesenhado com os dados do dashboard. As "
+            "estatísticas continuam calculadas sobre os 496 municípios; os filtros só destacam "
+            "a seleção (em cinza, o que está fora dela).")
 DINHEIRO = st.column_config.NumberColumn(format="R$ %.0f")
 
 
@@ -113,8 +113,14 @@ def secao(titulo, selo, cor, nota=None):
         st.caption(nota)
 
 
-def selo_atividade01(numero, novidade=False):
-    return f"Atividade 01 · gráfico {numero}" + (" · novidade" if novidade else "")
+def selo_atividade01(novidade=False):
+    """Selo dos blocos vindos da Atividade 01.
+
+    A distinção é só entre as duas atividades: o selo não aponta para a seção
+    de origem, porque a numeração daquele trabalho não diz nada a quem usa o
+    dashboard e envelhece assim que o notebook é reorganizado.
+    """
+    return "Atividade 01" + (" · novidade" if novidade else "")
 
 
 # ---------------------------------------------------------------------------

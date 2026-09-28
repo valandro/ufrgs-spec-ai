@@ -7,7 +7,7 @@ recalculam os cortes. Assim um município mantém sempre a mesma classe, e os
 números batem com os notebooks da Atividade 01.
 
 Rodar `python analise.py` confere os resultados contra os valores publicados
-em `notebook/atividade01_dados_pib_2010.ipynb`.
+na Atividade 01.
 """
 
 from dataclasses import dataclass
@@ -36,6 +36,28 @@ FAIXAS = {
     "pct_3a5sm_2010": "Mais de 3 até 5 SM",
     "pct_mais_5sm_2010": "Mais de 5 SM",
 }
+# Pergunta 1 — faixa da renda MÉDIA do município em múltiplos do salário mínimo
+# de 2010. Não confundir com FAIXAS, acima: lá cada município se reparte entre as
+# seis faixas dos seus ocupados; aqui o município inteiro cai numa faixa só, pela
+# sua média. Vem do dashboard de `educacao/tarefa_02`.
+SALARIO_MINIMO_2010 = 510.00
+FAIXAS_RENDA_SM = [
+    "Abaixo de 1 salário mínimo",
+    "De 1 a menos de 2 salários mínimos",
+    "De 2 a menos de 3 salários mínimos",
+    "De 3 a menos de 4 salários mínimos",
+    "De 4 a menos de 5 salários mínimos",
+]
+
+
+def faixa_renda_sm(renda):
+    """Em qual múltiplo do salário mínimo de 2010 cai a renda média do município."""
+    if pd.isna(renda):
+        return None
+    degrau = int(renda // SALARIO_MINIMO_2010)
+    return FAIXAS_RENDA_SM[min(degrau, len(FAIXAS_RENDA_SM) - 1)]
+
+
 SETORES = {
     "pct_vab_agropecuaria_2010": "Agropecuária",
     "pct_vab_industria_2010": "Indústria",
@@ -53,9 +75,9 @@ AGRUPAMENTOS = {
 }
 AGRUPAMENTO_PADRAO = "Tercis"
 
-# Classes de resíduo das perguntas 1 e 4: o critério de ±1 desvio-padrão da
-# seção 6.4.1 da Atividade 01, aplicado também à pergunta 1 para que os dois
-# mapas se leiam do mesmo jeito.
+# Classes de resíduo das perguntas 1 e 4: o critério de ±1 desvio-padrão que a
+# Atividade 01 usou na pergunta 4, aplicado também à pergunta 1 para que os
+# dois mapas se leiam do mesmo jeito.
 CLASSES_P1 = [
     "Muito abaixo do esperado (< −1 dp)",
     "Abaixo do esperado",
@@ -104,7 +126,7 @@ CLASSES_P2 = [
 CORES_BASE = {
     "P1": "#2a78d6",   # azul
     "P2": "#eb6834",   # laranja
-    "P3": "#1baf7a",   # aqua
+    "P3": "#e87ba4",   # magenta
     "P4": "#4a3aa7",   # violeta
 }
 
@@ -132,11 +154,11 @@ CORES_P2 = {
 # confundiam. O passo mais claro continua o mesmo (o do contraste 2:1 com o fundo);
 # a rampa agora desce até L* 16, com um leve giro para o verde-azulado nos tons
 # escuros, e todos os vizinhos ficam a ΔE ≥ 15.
-CORES_QUINTIL = ["#82bfa1", "#4f9b79", "#00785d", "#005344", "#00302b"]
+CORES_QUINTIL = ["#dfa1b6", "#bf7991", "#9f516e", "#7f284d", "#59002e"]
 
 # Escala dos gráficos da Atividade 01 — NÃO mexer: é a rampa do notebook.
 CORES_FAIXAS = ["#86b6ef", "#5598e7", "#2a78d6", "#256abf", "#184f95", "#0d366b"]
-# Mesmas seis faixas, no laranja da página 2, para o gráfico 6.2.1 interativo: o mesmo
+# Mesmas seis faixas, no laranja da página 2, para o gráfico interativo: o mesmo
 # matiz do mapa (pontas #eba186 → #7c2800), estendido para um tom mais claro na base
 # (sem rendimento) e um mais escuro no topo (mais de 5 SM). Vizinhos a ΔE ≥ 13,5.
 CORES_FAIXAS_P2 = ["#ffd9c9", "#f2ae96", "#d48669", "#b26140", "#913e1a", "#6e1b00"]
@@ -207,12 +229,12 @@ def calcular(municipios):
         mun[ag["coluna"]] = grupo.reindex(mun.index)
         limites_p2[nome] = tuple(float(v) for v in limites)
 
-    # Pergunta 3 — quintis de renda (mapa 6.3.3)
+    # Pergunta 3 — quintis de renda (mapa)
     quintil, limites_p3 = pd.qcut(base[RENDA], 5, labels=False, retbins=True)
     mun["quintil_renda"] = quintil.reindex(mun.index)
     mediana_rf1 = float(base.loc[base["regiao_funcional_id"] == 1, RENDA].median())
 
-    # Pergunta 4 — renda esperada pelo log do PIB per capita (seção 6.4.1)
+    # Pergunta 4 — renda esperada pelo log do PIB per capita
     log_pib = np.log10(base[PIB] / 1000)
     inclinacao_p4, intercepto_p4 = np.polyfit(log_pib, base[RENDA], 1)
     mun["esperado_p4"] = intercepto_p4 + inclinacao_p4 * np.log10(mun[PIB] / 1000)
@@ -261,7 +283,7 @@ def reais(valor, casas=0, sinal=False):
 
 
 def medias_faixas(municipios, agrupamento=AGRUPAMENTO_PADRAO):
-    """Média das distribuições municipais por grupo de escolaridade (seção 6.2).
+    """Média das distribuições municipais por grupo de escolaridade.
 
     `agrupamento` é "Tercis", "Quartis" ou "Quintis" (chaves de AGRUPAMENTOS).
     """
@@ -324,7 +346,7 @@ DISCRIMINANTES_P4 = {
 def testes_p4(municipios, n_permutacoes=20000, semente=7):
     """p-valor da diferença de medianas entre os dois grupos do tercil inferior de PIB.
 
-    Mesmo teste da seção 6.4.1: embaralha os rótulos dos grupos e mede quão
+    Mesmo teste da Atividade 01: embaralha os rótulos dos grupos e mede quão
     extrema é a diferença observada. As permutações são geradas de uma vez, em
     matriz, então os p-valores podem diferir na terceira casa dos publicados.
     """

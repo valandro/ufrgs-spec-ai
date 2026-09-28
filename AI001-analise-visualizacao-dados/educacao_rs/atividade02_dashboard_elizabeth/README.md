@@ -1,7 +1,7 @@
 # Escolaridade, renda e produção nos municípios do RS — dashboard
 
 Atividade 02 da disciplina IA001: dashboard em Streamlit que dá continuidade à
-Atividade 01 (`notebook/atividade01_dados_pib_2010.ipynb`) e permite investigar
+Atividade 01 e permite investigar
 as suas quatro perguntas nos 496 municípios gaúchos, com dados do Censo 2010.
 
 **Público:** técnicos de planejamento regional (COREDEs, SEPLAG-RS e secretarias
@@ -14,11 +14,12 @@ O dashboard tem uma **página por pergunta**, mais uma página **Início** com o
 as quatro perguntas e como usar os filtros. A navegação fica no topo, e cada página tem
 endereço próprio (por exemplo `/faixas-de-renda`). Cada página é uma coluna única, de
 cima para baixo: indicadores da seleção, controles próprios da pergunta (quando há),
-mapa interativo, gráficos da Atividade 01 e tabela dos municípios. A página da
-pergunta 2 muda essa ordem: primeiro o gráfico 6.2.1 e o "Quem foge do padrão?", depois
-o mapa. Cada bloco traz um selo com a sua origem:
+mapa interativo, gráficos e tabela dos municípios. Duas páginas invertem a ordem e
+abrem pelo gráfico: a pergunta 1, com a dispersão escolaridade × rendimento, e a
+pergunta 2, com o gráfico de faixas e o "Quem foge do padrão?". Cada bloco traz um
+selo com a sua origem:
 
-- **Atividade 01** (azul) — o mesmo gráfico de `notebook/atividade01_dados_pib_2010.ipynb`,
+- **Atividade 01** (azul) — o mesmo gráfico daquele trabalho,
   com as mesmas cores, títulos, eixos e anotações, redesenhado em Matplotlib com os dados
   do dashboard. As estatísticas continuam calculadas sobre os 496 municípios; os filtros
   só destacam a seleção (o que está fora dela fica em cinza). Com todas as regiões
@@ -28,13 +29,24 @@ o mapa. Cada bloco traz um selo com a sua origem:
 
 | | Pergunta | Mapa interativo (Atividade 02) | Gráficos (Atividade 01) |
 |---|---|---|---|
-| 1 | Municípios onde mais ocupados têm ensino médio completo pagam melhor? | Novo: renda observada − esperada pela escolaridade, em 4 classes de ±1 desvio-padrão | 6.1 — dispersão com reta e r de Pearson |
-| 2 | Como muda a distribuição de faixas de renda conforme o nível de escolaridade do município? | Novo: grupo de escolaridade (tercis, quartis ou quintis, à escolha) | 6.2.1 — barras 100% empilhadas por grupo de escolaridade, em versão interativa (Altair), com leitura automática ao lado e comparação entre tercis, quartis e quintis |
-| 3 | A proximidade da capital explica o rendimento, ou há regiões não metropolitanas com rendimento equivalente ou superior? | Versão interativa do mapa 6.3.3: quintis de renda, anéis de 100/200/300 km, contornos da RF1 e da RF3 | 6.3.2 — um ponto por município e o traço da mediana, por Região Funcional |
-| 4 ✨ | Existem municípios cuja renda é incompatível com a produção local, e o que distingue os de PIB igualmente baixo? | Versão interativa do mapa 6.4.4: resíduo em relação ao PIB, contorno nos 13 municípios de PIB baixo e renda acima do esperado | 6.4.2 — dispersão PIB × renda; 6.4.3 — os dois grupos do tercil inferior de PIB |
+| 1 | Municípios onde mais ocupados têm ensino médio completo pagam melhor? | Novo: renda observada − esperada pela escolaridade, em 4 classes de ±1 desvio-padrão | Dispersão escolaridade × rendimento com reta de tendência, em versão interativa (Altair), com Porto Alegre em destaque e filtros próprios de faixa de renda e escolaridade |
+| 2 | Como muda a distribuição de faixas de renda conforme o nível de escolaridade do município? | Novo: grupo de escolaridade (tercis, quartis ou quintis, à escolha) | Barras 100% empilhadas por grupo de escolaridade, em versão interativa (Altair), com leitura automática ao lado e comparação entre tercis, quartis e quintis |
+| 3 | A proximidade da capital explica o rendimento, ou há regiões não metropolitanas com rendimento equivalente ou superior? | Versão interativa do mapa: quintis de renda, anéis de 100/200/300 km, contornos da RF1 e da RF3 | Um ponto por município e o traço da mediana, por Região Funcional |
+| 4 ✨ | Existem municípios cuja renda é incompatível com a produção local, e o que distingue os de PIB igualmente baixo? | Versão interativa do mapa: resíduo em relação ao PIB, contorno nos 13 municípios de PIB baixo e renda acima do esperado | Dispersão PIB × renda; e o contraste entre os dois grupos do tercil inferior de PIB |
+
+**A dispersão da pergunta 1 vem do dashboard de `educacao/tarefa_02`**, e substituiu a
+figura estática que a página trazia. Mantivemos o desenho de lá — pontos, reta de
+tendência, Porto Alegre em destaque e o tooltip com município, COREDE, região e faixa de
+renda — e os dois filtros próprios: faixa da renda média do município em múltiplos do
+salário mínimo de 2010 e intervalo de escolaridade, que valem só para aquele gráfico.
+
+Uma diferença: no `tarefa_02` a reta era reajustada a cada filtro; aqui ela é a do estado
+inteiro. É a regra deste dashboard — os cortes não mudam com o filtro — e sem ela a reta
+contradiria o mapa e a tabela da mesma página, que medem o resíduo contra a reta dos 496
+municípios.
 
 **A pergunta 2 ganhou uma visualização nova, "Quem foge do padrão?"** (Altair). O
-gráfico 6.2.1 mostra médias de grupos; esta mostra cada município. Para a faixa de renda
+gráfico de faixas mostra médias de grupos; esta mostra cada município. Para a faixa de renda
 escolhida (a base da renda — sem rendimento + até 1 SM — por padrão), um ponto por
 município contra a fatia **esperada pela escolaridade**, com a faixa de ±1 desvio-padrão,
 e ao lado um ranking dos 10 municípios mais acima e dos 10 mais abaixo do esperado. O
@@ -45,17 +57,17 @@ Dezesseis de Novembro, Tupanci do Sul e Rio dos Índios têm muito mais ocupados
 do que a escolaridade sugere; Nova Hartz, Araricá e Lindolfo Collor, muito menos.
 
 **A pergunta 4 é uma novidade.** Ela não estava entre as três perguntas da proposta
-original da Atividade 01: foi acrescentada em `atividade01_dados_pib_2010.ipynb` com um
+original da Atividade 01: foi acrescentada com um
 terceiro conjunto de dados, o PIB dos municípios de 2010 (IBGE), e é a única que cruza a
 renda dos moradores com a produção local. O dashboard a marca com o selo "novidade".
 
-Bibliotecas de visualização: **Folium** (mapas), **Matplotlib** (gráficos da Atividade 01) e
-**Altair** (gráfico 6.2.1 interativo e "Quem foge do padrão?", na pergunta 2).
+Bibliotecas de visualização: **Folium** (mapas), **Altair** (dispersão da pergunta 1, gráfico de faixas e "Quem foge do padrão?", na pergunta 2) e **Matplotlib** (os demais gráficos da
+Atividade 01).
 
 ## Cores
 
 Cada pergunta pinta o seu mapa numa **cor base própria** — azul na 1, laranja na 2,
-verde na 3, violeta na 4 — e trocar de pergunta troca a cor do mapa inteiro. As
+magenta na 3, violeta na 4 — e trocar de pergunta troca a cor do mapa inteiro. As
 quatro escalas são **rampas sequenciais de um tom só**, do claro ao escuro:
 
 | Pergunta | Escala | Do claro ao escuro |
@@ -76,18 +88,20 @@ Três decisões que vale conhecer:
   resíduo tem sinal, e zero fica entre a 2ª e a 3ª classe. Numa rampa de um tom, "muito
   abaixo" e "muito acima" viram as duas pontas de uma mesma grandeza; quem carrega o
   sinal é o rótulo de cada classe, que diz a direção em palavras.
-- **O mapa da pergunta 3 foi refeito para ficar nítido.** Os quintis vizinhos da escala
-  anterior ficavam a ΔE 10–12, abaixo do mínimo de 15 para serem distinguidos; a escala
-  agora desce até um verde quase preto, com todos os vizinhos a ΔE ≥ 15. As fronteiras
-  das 9 regiões recuam para um cinza fino e os anéis de distância ficam mais claros,
-  para que o destaque fique com a RF1 e a RF3 — cujos contornos pretos ganham um traço
-  branco por baixo, para aparecerem também sobre os municípios mais escuros.
+- **O mapa da pergunta 3 foi refeito duas vezes.** Primeiro porque os quintis vizinhos
+  ficavam a ΔE 10–12, abaixo do mínimo de 15 para serem distinguidos: a escala passou a
+  descer até quase preto, com todos os vizinhos a ΔE ≥ 15. Depois porque, num verde
+  assim, os anéis de distância sumiam — um cinza médio chegava a 1,07:1 contra o passo
+  do meio da rampa. A escala virou **magenta**, e os anéis ganharam o mesmo traço branco
+  por baixo que os contornos da RF1 e da RF3 já tinham: nenhuma cor única atravessa
+  cinco passos de uma rampa sem desaparecer em algum deles. As fronteiras das 9 regiões
+  seguem num cinza fino, para que o destaque fique com a RF1 e a RF3.
 - **O cinza de "sem dado" é `#e4e3e0`**, perto da superfície; para não depender só do
   preenchimento, o município sem dado ganha um traço escuro no mapa.
 
 **Os gráficos Matplotlib da Atividade 01 mantêm as cores originais do notebook**, de
 propósito: existem para corresponder ao trabalho anterior. A exceção é a **página da
-pergunta 2**, que usa um laranja só: o gráfico 6.2.1 interativo passou do azul do notebook
+pergunta 2**, que usa um laranja só: o gráfico de faixas interativo passou do azul original
 para seis tons do mesmo laranja do mapa (`CORES_FAIXAS_P2` em `analise.py`), e o "Quem
 foge do padrão?" usa a escala do mapa. Todas as cores dos dados ficam em `analise.py`.
 
@@ -107,7 +121,7 @@ pergunta:
 **Dentro da página — valem só para a pergunta dela**, e ficam junto do que mudam:
 
 3. **Tercis · Quartis · Quintis** (pergunta 2) — quantos grupos de escolaridade usar no
-   mapa e no gráfico 6.2.1.
+   mapa e no gráfico de faixas.
    **Faixa de renda analisada** e **Destacar município** (pergunta 2, "Quem foge do
    padrão?") — qual faixa comparar com o esperado pela escolaridade (a base da renda, por
    padrão) e qual município marcar no gráfico, no ranking e no quadro-resumo.
@@ -162,7 +176,7 @@ atividade02_dashboard_elizabeth/
 │   └── p4_renda_producao.py
 ├── analise.py                # cálculos das 4 perguntas + autoverificação
 ├── graficos_atividade01.py   # gráficos da Atividade 01 (Matplotlib)
-├── graficos_interativos.py   # pergunta 2 em Altair: 6.2.1 e "Quem foge do padrão?"
+├── graficos_interativos.py   # Altair: dispersão da pergunta 1, faixas e "Quem foge do padrão?"
 ├── requirements.txt
 └── dados/
     ├── municipios_web.geojson   # 497 municípios, indicadores de 2010

@@ -1,8 +1,8 @@
-"""Gráficos da Atividade 01, no mesmo modelo de `notebook/atividade01_dados_pib_2010.ipynb`.
+"""Gráficos da Atividade 01, redesenhados com os dados do dashboard.
 
-Cada função reproduz um gráfico da seção 6 daquele notebook — mesmas cores,
-títulos, eixos, anotações e rodapé de fontes. A única adaptação é o destaque
-da seleção feita nos filtros do dashboard:
+Cada função reproduz um gráfico daquele trabalho — mesmas cores, títulos,
+eixos, anotações e rodapé de fontes. A única adaptação é o destaque da
+seleção feita nos filtros do dashboard:
 
 - as estatísticas (retas, medianas, tercis, p-valores) continuam calculadas
   sobre os 496 municípios, como na Atividade 01;
@@ -40,54 +40,12 @@ def _estilo(ax, grade="y"):
 
 
 # ---------------------------------------------------------------------------
-# 6.1 — Pergunta 1
+# Pergunta 2 — faixas de renda por grupo de escolaridade
 # ---------------------------------------------------------------------------
-def grafico_6_1(mun, modelos, selecao):
-    """Dispersão escolaridade × rendimento com reta de tendência e r de Pearson."""
-    COR_PONTOS = "#2a78d6"
-    COR_LINHA = "#52514e"
-    base = mun[mun[RENDA].notna()]
-    dentro = selecao[base.index]
-    filtrado = not dentro.all()
-
-    fig = Figure(figsize=(8, 6))
-    ax = fig.subplots()
-    if filtrado:
-        fora = base[~dentro]
-        ax.scatter(fora[ESCOLARIDADE], fora[RENDA], s=18, color=COR_FORA, alpha=0.8,
-                   edgecolors="none", label=f"Demais municípios do RS (n={len(fora)})")
-    escolhidos = base[dentro]
-    ax.scatter(escolhidos[ESCOLARIDADE], escolhidos[RENDA], s=22, color=COR_PONTOS, alpha=0.6,
-               edgecolors="none",
-               label=(f"Seleção (n={len(escolhidos)})" if filtrado
-                      else f"Municípios do RS (n={len(escolhidos)})"))
-
-    x_linha = np.array([base[ESCOLARIDADE].min(), base[ESCOLARIDADE].max()])
-    ax.plot(x_linha, modelos.p1_inclinacao * x_linha + modelos.p1_intercepto, color=COR_LINHA,
-            linewidth=2, linestyle="--", label="Tendência linear")
-
-    ax.set_title("Municípios com mais trabalhadores com ensino médio completo\n"
-                 "pagam salários mais altos?", fontsize=13, pad=12)
-    ax.set_xlabel("Ocupados com ensino médio completo (%)")
-    ax.set_ylabel("Rendimento médio dos ocupados (R\\$, 2010)")
-    _estilo(ax)
-    ax.annotate(f"r de Pearson = {modelos.p1_r:.2f}", xy=(0.03, 0.94), xycoords="axes fraction",
-                fontsize=10, color=COR_LINHA)
-    ax.legend(frameon=False, loc="lower right")
-    fig.text(0.01, 0.005, FONTE_ATLAS + ("\nReta e r calculados sobre os 496 municípios; "
-                                         "os filtros só destacam a seleção." if filtrado else ""),
-             fontsize=8, color="#8a8a86")
-    fig.tight_layout(rect=(0, 0.05, 1, 1))
-    return fig
-
-
-# ---------------------------------------------------------------------------
-# 6.2.1 — Pergunta 2
-# ---------------------------------------------------------------------------
-# Modelo: célula 6.2.1 de `notebook/atividade01_versao_final.ipynb` — barras 100%
-# empilhadas, rampa sequencial de um tom, rótulo em cada fatia de 5% ou mais,
-# legenda à direita na ordem da pilha (topo primeiro), figura de 8 × 6. O notebook
-# usa quartis; aqui o usuário escolhe tercis, quartis ou quintis (todos pd.qcut).
+# Modelo da Atividade 01: barras 100% empilhadas, rampa sequencial de um tom,
+# rótulo em cada fatia de 5% ou mais, legenda à direita na ordem da pilha (topo
+# primeiro), figura de 8 × 6. Lá os grupos eram quartis; aqui o usuário escolhe
+# tercis, quartis ou quintis (todos pd.qcut).
 FAIXAS_TEXTO_BRANCO = ("Mais de 2 até 3 SM", "Mais de 3 até 5 SM", "Mais de 5 SM")
 
 
@@ -131,7 +89,7 @@ def _rodape_p2(filtrado):
     return texto
 
 
-def grafico_6_2(sel, modelos, filtrado, agrupamento=an.AGRUPAMENTO_PADRAO):
+def grafico_faixas_renda(sel, modelos, filtrado, agrupamento=an.AGRUPAMENTO_PADRAO):
     """Pergunta 2 em tercis, quartis ou quintis (`agrupamento`, chave de an.AGRUPAMENTOS)."""
     rotulos_grupo = an.AGRUPAMENTOS[agrupamento]["rotulos"]
     medias, contagem = an.medias_faixas(sel, agrupamento)
@@ -153,18 +111,18 @@ def grafico_6_2(sel, modelos, filtrado, agrupamento=an.AGRUPAMENTO_PADRAO):
 
 
 # ---------------------------------------------------------------------------
-# 6.3.2 — Pergunta 3
+# Pergunta 3 — renda por Região Funcional
 #
-# Diferença deliberada em relação ao notebook: lá a seção 6.3.2 desenha um
-# boxplot, aqui cada município é um ponto e a região recebe apenas o traço da
-# mediana. Os dados são os mesmos — os 496 municípios com rendimento em 2010.
+# Diferença deliberada em relação à Atividade 01: lá o gráfico é um boxplot,
+# aqui cada município é um ponto e a região recebe apenas o traço da mediana.
+# Os dados são os mesmos — os 496 municípios com rendimento em 2010.
 #
 # O que se ganha: a quantidade real de municípios por região fica visível (de
 # 20 na RF6 a 130 na RF9), e as caudas aparecem como pontos, não como bigodes.
 # O que se perde: os quartis, que o boxplot mostrava de graça. Quem precisar
 # deles encontra a tabela por região logo abaixo do gráfico.
 # ---------------------------------------------------------------------------
-def grafico_6_3(mun, selecao, rfs):
+def grafico_renda_por_regiao(mun, selecao, rfs):
     """Renda por Região Funcional: um ponto por município e o traço da mediana."""
     COR_METRO = "#eb6834"
     COR_DEMAIS = "#2a78d6"
@@ -247,9 +205,9 @@ def grafico_6_3(mun, selecao, rfs):
 
 
 # ---------------------------------------------------------------------------
-# 6.4.2 — Pergunta 4
+# Pergunta 4 — quem foge do padrão produção → renda
 # ---------------------------------------------------------------------------
-def grafico_6_4_2(mun, modelos, selecao):
+def grafico_pib_renda(mun, modelos, selecao):
     """Dispersão PIB per capita × rendimento com a renda esperada e ± 1 desvio-padrão."""
     COR_BASE = "#c2d4e8"
     COR_RETA = "#52514e"
@@ -345,9 +303,9 @@ def grafico_6_4_2(mun, modelos, selecao):
 
 
 # ---------------------------------------------------------------------------
-# 6.4.3 — Pergunta 4
+# Pergunta 4 — o que distingue os de PIB igualmente baixo
 # ---------------------------------------------------------------------------
-def grafico_6_4_3(mun, modelos, selecao, p_valores):
+def grafico_tercil_inferior(mun, modelos, selecao, p_valores):
     """Os dois grupos do tercil inferior de PIB comparados em quatro indicadores."""
     COR_ACIMA = "#eb6834"
     COR_RESTO = "#7fa8d4"
