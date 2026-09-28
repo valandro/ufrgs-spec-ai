@@ -1,0 +1,11 @@
+# Versões testadas com Python 3.10.5
+streamlit==1.64.0
+folium==0.20.0
+altair==6.3.0
+matplotlib==3.10.9
+geopandas==1.1.4
+pandas==2.3.3
+# Faixa, e não versão fixa: testado com numpy 1.24.0 e 2.2.6. Fixar a 2.x
+# atualiza o numpy de quem instala fora de um ambiente virtual e quebra pacotes
+# compilados para o numpy 1.x (TensorFlow 2.14, h5py, matplotlib antigos).
+numpy>=1.24,<3
