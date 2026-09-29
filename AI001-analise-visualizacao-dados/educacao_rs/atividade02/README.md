@@ -10,12 +10,32 @@ registro, `atividade02_dashboard_streamlit.ipynb`.
 
 ## Instalação e execução
 
-Requer Python 3.10 ou mais recente. A aplicação fica em `dashboard/`:
+Requer Python 3.10 ou mais recente e acesso à internet para instalar as dependências.
+Depois de extrair o ZIP, abra um terminal na pasta `atividade02/` que contém este
+README. A aplicação fica em `dashboard/`.
+
+### Windows (PowerShell)
+
+O comando `py` é instalado junto com o Python pelo instalador oficial. Os comandos
+abaixo usam diretamente o Python do ambiente virtual, sem exigir a ativação dele:
+
+```powershell
+cd .\dashboard
+py -3 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m streamlit run app.py
+```
+
+Se `py` não for reconhecido, instale o Python 3.10 ou mais recente e marque a opção
+para instalar o Python Launcher. Se o terminal estiver na pasta acima daquela que
+contém este README, entre primeiro nela com `cd .\atividade02`.
+
+### macOS e Linux
 
 ```bash
 cd dashboard
 python -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
+source .venv/bin/activate
 pip install -r requirements.txt
 streamlit run app.py
 ```
