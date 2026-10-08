@@ -11,20 +11,20 @@ import streamlit as st
 
 import comum
 
-st.set_page_config(page_title="Escolaridade e renda no RS", page_icon="🗺️", layout="wide")
+st.set_page_config(page_title="Escolaridade, renda e produção nos municípios do RS", page_icon="🗺️", layout="wide")
 
 # ---------------------------------------------------------------------------
 # Navegação — uma página por pergunta, com endereço próprio
 # ---------------------------------------------------------------------------
 paginas = [
     st.Page("paginas/inicio.py", title="Início", icon=":material/home:", default=True),
-    st.Page("paginas/p1_escolaridade_renda.py", title="Escolaridade × renda",
+    st.Page("paginas/p1_escolaridade_renda.py", title="1. Escolaridade × renda",
             icon=":material/school:", url_path="escolaridade-renda"),
-    st.Page("paginas/p2_faixas_de_renda.py", title="Faixas de renda",
+    st.Page("paginas/p2_faixas_de_renda.py", title="2. Faixas de renda",
             icon=":material/stacked_bar_chart:", url_path="faixas-de-renda"),
-    st.Page("paginas/p3_capital.py", title="Proximidade da capital",
+    st.Page("paginas/p3_capital.py", title="3. Proximidade da capital",
             icon=":material/location_on:", url_path="proximidade-da-capital"),
-    st.Page("paginas/p4_renda_producao.py", title="Renda × produção ✨",
+    st.Page("paginas/p4_renda_producao.py", title="4. Renda × produção ✨",
             icon=":material/factory:", url_path="renda-producao"),
 ]
 pagina = st.navigation(paginas, position="top")
