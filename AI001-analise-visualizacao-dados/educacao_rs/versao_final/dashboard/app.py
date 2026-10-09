@@ -11,7 +11,7 @@ import streamlit as st
 
 import comum
 
-st.set_page_config(page_title="Escolaridade e renda no RS", page_icon="🗺️", layout="wide")
+st.set_page_config(page_title="Escolaridade, renda e PIB nos municípios do RS", page_icon="🗺️", layout="wide")
 
 # ---------------------------------------------------------------------------
 # Navegação — uma página por pergunta, com endereço próprio
@@ -24,7 +24,7 @@ paginas = [
             icon=":material/stacked_bar_chart:", url_path="faixas-de-renda"),
     st.Page("paginas/p3_capital.py", title="Proximidade da capital",
             icon=":material/location_on:", url_path="proximidade-da-capital"),
-    st.Page("paginas/p4_renda_producao.py", title="Renda × produção ✨",
+    st.Page("paginas/p4_renda_producao.py", title="Renda × produção",
             icon=":material/factory:", url_path="renda-producao"),
 ]
 pagina = st.navigation(paginas, position="top")
@@ -51,11 +51,5 @@ st.sidebar.multiselect(
     "COREDE", coredes_disponiveis, key="coredes",
     placeholder="Todos das regiões escolhidas",
     help="Só aparecem os COREDEs das Regiões Funcionais escolhidas acima.")
-
-st.sidebar.divider()
-st.sidebar.caption(
-    "Os filtros valem para todas as páginas. Os cortes (retas, tercis/quartis/quintis, "
-    "desvios-padrão) são calculados sobre os 496 municípios do RS e **não mudam com o filtro**: "
-    "ele só escolhe o que aparece.")
 
 pagina.run()

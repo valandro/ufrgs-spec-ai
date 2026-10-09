@@ -8,18 +8,11 @@ import comum
 import graficos_atividade01 as g1
 from analise import PIB, POPULACAO, RENDA
 
-NOVIDADE = (
-    "**Novidade.** Esta pergunta não estava entre as três perguntas da proposta original da "
-    "Atividade 01. Ela foi acrescentada com um terceiro "
-    "conjunto de dados — o **PIB dos municípios de 2010 (IBGE)**, que traz PIB per capita, "
-    "população e valor adicionado por setor — e é a única que cruza a renda dos moradores com a "
-    "produção local.")
-
 ctx = comum.contexto()
 m = ctx.modelos
 
 comum.cabecalho(4, "Existem municípios cuja renda dos residentes é incompatível com sua produção "
-                   "local, e o que os distingue dos demais de PIB igualmente baixo?", NOVIDADE)
+                   "local, e o que os distingue dos demais de PIB igualmente baixo?")
 
 # Controle próprio desta página: restringe a seleção (e por isso vem antes dos cartões).
 so_tercil = st.toggle(
@@ -70,7 +63,6 @@ def contorno_destaque(mapa):
 comum.secao_mapa(
     ctx, selecao, cores, list(zip(escala, an.CLASSES_P4)),
     f"Renda observada − esperada (1 dp = {an.reais(m.p4_dp)})", tooltip,
-    origem="novo nesta atividade",
     como_ler=("O mapa mostra quanto a renda se afasta da **renda esperada pelo PIB per capita**. "
               "Quanto mais escuro, mais a renda supera o que o PIB per capita faria esperar; os "
               "tons claros produzem muito e a renda não fica com os residentes. Contorno preto: os "

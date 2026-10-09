@@ -1,5 +1,7 @@
 """Pergunta 1 — Municípios onde mais ocupados têm ensino médio completo pagam melhor?"""
 
+import math
+
 import streamlit as st
 
 import analise as an
@@ -30,8 +32,8 @@ comum.cartoes(ctx, sel, [
 # esta página trazia, e abre a página. Os dois filtros abaixo são dele e valem
 # só para este gráfico: o mapa, os cartões e a tabela seguem a barra lateral.
 # ---------------------------------------------------------------------------
-comum.secao("Escolaridade × rendimento", "Atividade 02" " · versão interativa", "green",
-            "Cada ponto é um município: o eixo horizontal é o % de ocupados com ensino médio "
+comum.secao("Escolaridade × rendimento",
+            "Cada ponto é um município: o eixo horizontal é a porcentagem de ocupados com ensino médio "
             "completo, o vertical é o rendimento médio dos ocupados. A reta é a tendência do "
             "estado inteiro — a mesma que o mapa abaixo usa como referência —, então ela não se "
             "move quando você filtra. Porto Alegre aparece destacada quando está na seleção.")
@@ -43,10 +45,9 @@ faixas_sm = coluna_faixas.multiselect(
     help="A faixa é a da renda MÉDIA do município, em múltiplos do salário mínimo de 2010. "
          "Vale só para este gráfico.")
 
-limites = (round(float(ctx.mun[ESCOLARIDADE].min()), 2),
-           round(float(ctx.mun[ESCOLARIDADE].max()), 2))
+limites = (math.floor(ctx.mun[ESCOLARIDADE].min()), math.ceil(ctx.mun[ESCOLARIDADE].max()))
 intervalo = coluna_escolaridade.slider(
-    "Ocupados com ensino médio completo (%)", *limites, value=limites, step=0.01,
+    "Ocupados com ensino médio completo (%)", *limites, value=limites, step=1, format="%d%%",
     key="escolaridade_p1", help="Recorta a faixa de escolaridade mostrada no gráfico.")
 
 grafico = sel[sel[ESCOLARIDADE].between(*intervalo)]
@@ -63,8 +64,24 @@ else:
         gi.dispersao_escolaridade_renda(grafico, m, destacar_poa=True), width="stretch")
     st.caption(
         f"{len(grafico)} de {len(sel)} municípios da seleção. Faixas de renda calculadas sobre o "
-        "salário mínimo de 2010, R$ 510,00 (CONSTANZI, Rogério Nagamine; FIPE, 2023). "
+        "salário mínimo de 2010, R$ 510,00 (Lei nº 12.255/2010). "
         "Passe o mouse sobre um ponto para ver município, COREDE, região e valores.")
+
+# No st.markdown, dois "$" no mesmo texto viram fórmula LaTeX: escapar o cifrão.
+def reais_md(v):
+    return an.reais(v).replace("$", "\\$")
+
+
+r_sel = sel[ESCOLARIDADE].corr(sel[RENDA]) if len(sel) >= 5 else float("nan")
+st.markdown(
+    "**O que o gráfico mostra**\n"
+    f"- **Escolaridade e renda andam juntas.** No estado, r = {an.formatar(m.p1_r, 2)} "
+    f"(Pearson); na seleção, r = {an.formatar(r_sel, 2)}. Pela reta, cada ponto percentual a mais "
+    f"de ocupados com ensino médio corresponde, em média, a {reais_md(m.p1_inclinacao)} a mais de "
+    "renda.\n"
+    f"- **Há municípios fora do padrão:** {int((sel['residuo_p1'] > m.p1_dp).sum())} ganham muito "
+    f"acima do esperado e {int((sel['residuo_p1'] < -m.p1_dp).sum())} muito abaixo "
+    f"(mais de 1 desvio-padrão, {reais_md(m.p1_dp)}). O mapa mostra onde estão.")
 
 # Mapa: resíduo em relação à escolaridade, numa rampa sequencial na cor base da
 # pergunta, do claro (abaixo do esperado) ao escuro (acima). A escala não tem
@@ -81,12 +98,10 @@ tooltip["Diferença"] = visiveis["residuo_p1"].map(lambda v: an.reais(v, sinal=T
 comum.secao_mapa(
     ctx, selecao, cores, list(zip(escala, an.CLASSES_P1)),
     f"Renda observada − esperada (1 dp = {an.reais(m.p1_dp)})", tooltip,
-    origem="novo nesta atividade",
     como_ler=("O mapa mostra quanto a renda de cada município se afasta da **renda esperada pela "
               "escolaridade** (a reta do gráfico acima). Quanto mais escuro, mais o município paga "
               "acima do que a escolaridade sugere; os tons claros ganham menos do que o esperado. "
-              "As duas pontas passam de 1 desvio-padrão — são os casos a investigar dentro de cada "
-              "COREDE."))
+              "As duas pontas passam de 1 desvio-padrão."))
 
 comum.tabela(
     sel,

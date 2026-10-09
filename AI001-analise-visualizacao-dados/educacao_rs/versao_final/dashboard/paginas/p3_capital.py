@@ -6,7 +6,7 @@ import streamlit as st
 
 import analise as an
 import comum
-import graficos_atividade01 as g1
+import graficos_interativos as gi
 from analise import DISTANCIA, RENDA
 
 ctx = comum.contexto()
@@ -80,7 +80,6 @@ def aneis_e_contornos(mapa):
 
 comum.secao_mapa(
     ctx, selecao, cores, legenda, "Rendimento médio dos ocupados (quintis do RS)", tooltip,
-    origem="novo nesta atividade",
     como_ler=("O mapa pinta a **renda em quintis**. Os anéis marcam 100, 200 e 300 km de Porto "
               "Alegre: se a proximidade explicasse a renda, os tons escuros se concentrariam no "
               "centro. Contornos: Metropolitana (traço cheio) e Serra e Hortênsias (tracejado)."),
@@ -93,16 +92,34 @@ comum.secao_mapa(
     # a pergunta compara é a RF1 e a RF3, que ganham o contorno preto.
     fronteira={"color": "#9a9994", "weight": 0.8})
 
-# Mesmos dados da Atividade 01, outro desenho: pontos e traço de mediana no
-# lugar do boxplot. Os números são os mesmos; o que muda é o que a figura
-# mostra de imediato — o n de cada região em vez dos quartis.
+# Pontos e traço de mediana no lugar do boxplot da Atividade 01: mesmos números,
+# mas a figura mostra o n de cada região e, no tooltip, cada município.
 comum.secao(
-    "Renda por Região Funcional", comum.selo_atividade01(), "blue",
-    "Mesmos dados da Atividade 01 — os 496 municípios com rendimento em 2010 — em outro "
-    "desenho: cada ponto é um município e o traço vertical é a mediana da região, no lugar do "
-    "boxplot original. As medianas e a ordem das regiões são idênticas; os filtros só destacam "
-    "a seleção.")
-st.pyplot(g1.grafico_renda_por_regiao(ctx.mun, selecao, ctx.rfs), width="content")
+    "Renda por Região Funcional",
+    f"Os {m.n} municípios com rendimento em 2010: cada ponto é um município e o traço vertical é a "
+    f"mediana da região; a linha pontilhada é a mediana do estado ({an.reais(ctx.mun[RENDA].median())}). "
+    "O gráfico mostra sempre as 9 regiões inteiras e não muda com o filtro: a pergunta é a "
+    "comparação entre elas. Dentro de cada região, a altura do ponto não tem significado: só "
+    "separa municípios de renda parecida.")
+st.altair_chart(gi.renda_por_regiao(ctx.mun), width="stretch")
+st.caption("Passe o mouse sobre um ponto para ver município, COREDE, renda e distância da capital.")
+
+# No st.markdown, dois "$" no mesmo texto viram fórmula LaTeX: escapar o cifrão.
+def reais_md(v):
+    return an.reais(v).replace("$", "\\$")
+
+
+# Conclusão: medianas do estado inteiro, como no gráfico acima.
+medianas = ctx.mun[ctx.com_dado].groupby("regiao_funcional")[RENDA].median().sort_values(ascending=False)
+pos_rf1 = list(medianas.index).index(next(r for r in medianas.index if r.startswith("RF1"))) + 1
+rho_rs = ctx.mun.loc[ctx.com_dado, DISTANCIA].rank().corr(ctx.mun.loc[ctx.com_dado, RENDA].rank())
+st.markdown(
+    "**O que o gráfico mostra**\n"
+    f"- **A proximidade da capital explica pouco.** No estado, a correlação entre distância e "
+    f"renda é {an.formatar(rho_rs, 2)} (Spearman): fraca.\n"
+    f"- **Há região não metropolitana com renda maior.** A maior mediana é a de "
+    f"{medianas.index[0]} ({reais_md(medianas.iloc[0])}); a Metropolitana "
+    f"({reais_md(m.p3_mediana_rf1)}) é a {pos_rf1}ª de {len(medianas)}.")
 
 comum.tabela(
     sel, {RENDA: "Renda (R$)", DISTANCIA: "Distância a Porto Alegre (km)"},

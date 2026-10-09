@@ -6,28 +6,26 @@ import comum
 
 ctx = comum.contexto()
 
-st.title("Escolaridade, renda e produção nos municípios do RS")
-st.caption("Censo 2010 · 496 municípios · Atividade 02 da disciplina IA001")
+st.title("Escolaridade, renda e PIB nos municípios do RS")
+st.caption("Censo 2010 · 496 municípios")
 
 st.markdown(
     "Este dashboard é para **técnicos de planejamento regional** (COREDEs, SEPLAG-RS e "
     "secretarias municipais) que precisam localizar, dentro do seu COREDE, os municípios que mais "
-    "se afastam do padrão estadual. Ele dá continuidade às perguntas da Atividade 01: cada uma "
-    "tem a sua página, com um mapa interativo, os gráficos da Atividade 01 e a tabela dos "
-    "municípios.")
+    "se afastam do padrão estadual.")
 
 st.subheader("As quatro perguntas")
 perguntas = [
-    ("paginas/p1_escolaridade_renda.py", ":material/school:", "Escolaridade × renda",
+    ("paginas/p1_escolaridade_renda.py", ":material/school:", "1. Escolaridade × renda",
      "Municípios onde mais ocupados têm ensino médio completo pagam melhor?"),
-    ("paginas/p2_faixas_de_renda.py", ":material/stacked_bar_chart:", "Faixas de renda",
+    ("paginas/p2_faixas_de_renda.py", ":material/stacked_bar_chart:", "2. Faixas de renda",
      "Como muda a distribuição de faixas de renda conforme o nível de escolaridade do município?"),
-    ("paginas/p3_capital.py", ":material/location_on:", "Proximidade da capital",
+    ("paginas/p3_capital.py", ":material/location_on:", "3. Proximidade da capital",
      "A proximidade da capital explica o rendimento, ou há regiões não metropolitanas com "
      "rendimento equivalente ou superior?"),
-    ("paginas/p4_renda_producao.py", ":material/factory:", "Renda × produção ✨",
+    ("paginas/p4_renda_producao.py", ":material/factory:", "4. Renda × produção",
      "Existem municípios cuja renda é incompatível com a produção local, e o que distingue os de "
-     "PIB igualmente baixo? *Novidade: não estava na proposta original da Atividade 01.*"),
+     "PIB igualmente baixo?"),
 ]
 for linha in (perguntas[:2], perguntas[2:]):   # duas linhas de dois cartões, alinhados
     for coluna, (arquivo, icone, titulo, enunciado) in zip(st.columns(2), linha):
@@ -45,8 +43,5 @@ st.markdown(
     "calculados sobre os 496 municípios; o filtro só escolhe o que aparece. Assim um município "
     "fica sempre na mesma classe, qualquer que seja a seleção.")
 
-st.markdown("**Selos:** :blue-badge[Atividade 01] gráfico da Atividade 01 redesenhado com os dados "
-            "do dashboard · :green-badge[Atividade 02] criado nesta atividade (mapa, indicadores e "
-            "tabela).")
 
 comum.rodape()

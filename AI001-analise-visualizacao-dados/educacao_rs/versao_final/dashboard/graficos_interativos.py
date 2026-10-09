@@ -26,6 +26,10 @@ FAIXAS_TEXTO_BRANCO = ("Mais de 2 até 3 SM", "Mais de 3 até 5 SM", "Mais de 5 
 # não mudam com o filtro — e sem ela a reta contradiria o mapa e a tabela desta
 # mesma página, que medem o resíduo contra a reta dos 496 municípios.
 # ---------------------------------------------------------------------------
+# Números no padrão brasileiro (1.234,5) nos eixos e no tooltip.
+LOCALE_BR = {"number": {"decimal": ",", "thousands": ".", "grouping": [3],
+                        "currency": ["R$ ", ""]}}
+
 CORES_P1 = {
     "Municípios": "#6fa3cc",
     "Porto Alegre": "#168542",
@@ -86,7 +90,7 @@ def dispersao_escolaridade_renda(sel, modelos, destacar_poa=True):
         camadas.append(alt.Chart(poa).mark_circle(size=180, opacity=1).encode(
             x=EIXO_X_P1, y=EIXO_Y_P1, color=cor, tooltip=TOOLTIP_P1))
 
-    return alt.layer(*camadas).properties(height=460).configure_axis(
+    return alt.layer(*camadas).properties(height=460).configure(locale=LOCALE_BR).configure_axis(
         grid=True, gridColor="#e5e5e0")
 
 
@@ -282,3 +286,88 @@ def ranking_afastamento(sel, af, dp, alvo, destaque=None, n=10):
                .mark_text(fontSize=11, align="right", dx=-4).encode(**texto))
     zero = alt.Chart(pd.DataFrame({"diferenca": [0]})).mark_rule(color="#52514e").encode(x=x)
     return (zona + barras + valores + zero).properties(height=max(22 * len(r), 200))
+
+
+# ---------------------------------------------------------------------------
+# Pergunta 3 — renda por Região Funcional
+#
+# Versão Altair da figura Matplotlib (mesmos dados, cores e ordem): um ponto
+# por município, traço da mediana de cada região e linha da mediana do estado.
+# As medianas usam TODOS os municípios da região. Na pergunta 3 o gráfico
+# ignora o filtro: a resposta é a comparação entre as 9 regiões.
+# ---------------------------------------------------------------------------
+CORES_P3 = {
+    "RF1 · Metropolitana": "#eb6834",
+    "Demais Regiões Funcionais": "#2a78d6",
+    "Fora da seleção": "#dcdbd5",
+}
+
+
+def renda_por_regiao(mun, selecao=None):
+    """Strip plot da renda por Região Funcional, com tooltip por município.
+
+    Sem `selecao`, mostra sempre as 9 regiões inteiras (é a comparação da pergunta 3).
+    """
+    if selecao is None:
+        selecao = pd.Series(True, index=mun.index)
+    base = mun[mun[an.RENDA].notna()].copy()
+    resumo = base.groupby("regiao_funcional")[an.RENDA].agg(n="size", mediana="median")
+    resumo = resumo.sort_values("mediana", ascending=False)
+    rotulos = {rf: f"{rf} (n = {n})" for rf, n in resumo["n"].items()}
+    ordem = [rotulos[rf] for rf in resumo.index]          # maior mediana no topo
+
+    base["regiao"] = base["regiao_funcional"].map(rotulos)
+    base["grupo"] = np.where(
+        ~selecao[base.index], "Fora da seleção",
+        np.where(base["regiao_funcional"].str.startswith("RF1"),
+                 "RF1 · Metropolitana", "Demais Regiões Funcionais"))
+    # Deslocamento vertical fixo (semente), só para separar pontos próximos:
+    # assim os pontos não mudam de lugar a cada interação.
+    base["deslocamento"] = np.random.default_rng(3).uniform(-1, 1, len(base))
+    base["renda_txt"] = base[an.RENDA].map(an.reais)
+    base["dist_txt"] = base[an.DISTANCIA].map(lambda v: an.formatar(v, 0, sufixo=" km"))
+
+    medianas = resumo.reset_index()
+    medianas["regiao"] = medianas["regiao_funcional"].map(rotulos)
+    medianas["cor"] = np.where(medianas["regiao_funcional"].str.startswith("RF1"),
+                               CORES_P3["RF1 · Metropolitana"], CORES_P3["Demais Regiões Funcionais"])
+    medianas["mediana_txt"] = medianas["mediana"].map(an.reais)
+
+    y = alt.Y("regiao:N", sort=ordem, title=None,
+              axis=alt.Axis(labelLimit=320, ticks=False, domain=False, labelFontSize=12))
+    x = alt.X(f"{an.RENDA}:Q", title="Rendimento médio dos ocupados (R$, 2010)",
+              scale=alt.Scale(zero=False, nice=True))
+    presentes = [g for g in CORES_P3 if g in set(base["grupo"])]
+    cor = alt.Color("grupo:N", title=None,
+                    scale=alt.Scale(domain=presentes, range=[CORES_P3[g] for g in presentes]),
+                    legend=alt.Legend(orient="top", direction="horizontal", labelLimit=0))
+
+    pontos = alt.Chart(base).mark_circle(size=40).encode(
+        x=x, y=y, color=cor,
+        yOffset=alt.YOffset("deslocamento:Q", scale=alt.Scale(domain=[-1.5, 1.5])),
+        opacity=alt.condition(alt.datum.grupo == "Fora da seleção", alt.value(0.4), alt.value(0.6)),
+        order=alt.Order("grupo:N", sort="descending"),
+        tooltip=[alt.Tooltip("NM_MUN:N", title="Município"),
+                 alt.Tooltip("corede:N", title="COREDE"),
+                 alt.Tooltip("regiao_funcional:N", title="Região Funcional"),
+                 alt.Tooltip("renda_txt:N", title="Renda dos ocupados"),
+                 alt.Tooltip("dist_txt:N", title="Distância da capital")])
+    tracos = alt.Chart(medianas).mark_tick(thickness=3.5, size=40).encode(
+        x=alt.X("mediana:Q"), y=y, color=alt.Color("cor:N", scale=None),
+        tooltip=[alt.Tooltip("regiao_funcional:N", title="Região Funcional"),
+                 alt.Tooltip("mediana_txt:N", title="Mediana"),
+                 alt.Tooltip("n:Q", title="Municípios")])
+    rotulos_med = alt.Chart(medianas).mark_text(dy=-22, fontSize=11, fontWeight="bold").encode(
+        x="mediana:Q", y=y, text="mediana_txt:N", color=alt.Color("cor:N", scale=None))
+    mediana_rs = float(base[an.RENDA].median())
+    linha_rs = alt.Chart(pd.DataFrame({"m": [mediana_rs],
+                                       "txt": [f"mediana do estado: {an.reais(mediana_rs)}"]}))
+    regra = linha_rs.mark_rule(strokeDash=[2, 3], color="#8a8a86").encode(
+        x="m:Q", tooltip=[alt.Tooltip("txt:N", title="Estado")])
+
+    return (alt.layer(regra, pontos, tracos, rotulos_med)
+            .properties(height=60 * len(ordem))
+            .configure(locale=LOCALE_BR)
+            .configure_axis(grid=True, gridColor="#e5e5e0")
+            .configure_axisY(grid=False)
+            .configure_view(stroke=None))

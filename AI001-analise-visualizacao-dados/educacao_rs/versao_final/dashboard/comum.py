@@ -3,7 +3,7 @@
 Cada página (pasta `paginas/`) monta a sua pergunta com estas funções: lê os
 dados e os filtros com `contexto()`, desenha os cartões, o mapa e a tabela, e
 fecha com o rodapé. O que é específico de uma pergunta — cores do mapa, colunas
-do tooltip, gráficos da Atividade 01, controles próprios — fica na página.
+do tooltip, controles próprios — fica na página.
 """
 
 from dataclasses import dataclass
@@ -26,8 +26,7 @@ LIMITACOES = (
     "indivíduos) e cada município pesa 1, independente da população; Pinto Bandeira, emancipado em "
     "2013, não tem dado de 2010; a distância é em linha reta entre centroides, não tempo de "
     "deslocamento.")
-NOTA_A01 = ("Mesmo gráfico da Atividade 01, redesenhado com os dados do dashboard. As "
-            "estatísticas continuam calculadas sobre os 496 municípios; os filtros só destacam "
+NOTA_A01 = ("As estatísticas são calculadas sobre os 496 municípios; os filtros só destacam "
             "a seleção (em cinza, o que está fora dela).")
 DINHEIRO = st.column_config.NumberColumn(format="R$ %.0f")
 
@@ -104,23 +103,12 @@ def rodape():
     st.caption(LIMITACOES)
 
 
-def secao(titulo, selo, cor, nota=None):
-    """Cabeçalho de bloco com o selo que diz de qual atividade ele vem."""
+def secao(titulo, nota=None):
+    """Cabeçalho de bloco."""
     st.divider()
-    st.badge(selo, color=cor)
     st.markdown(f"#### {titulo}")
     if nota:
         st.caption(nota)
-
-
-def selo_atividade01(novidade=False):
-    """Selo dos blocos vindos da Atividade 01.
-
-    A distinção é só entre as duas atividades: o selo não aponta para a seção
-    de origem, porque a numeração daquele trabalho não diz nada a quem usa o
-    dashboard e envelhece assim que o notebook é reorganizado.
-    """
-    return "Atividade 01" + (" · novidade" if novidade else "")
 
 
 # ---------------------------------------------------------------------------
@@ -277,7 +265,7 @@ def legenda_html(itens, titulo, extras=()):
     return f'<div style="font-size:0.85rem"><b>{titulo}</b>{linhas}</div>'
 
 
-def secao_mapa(ctx, selecao, cores, legenda, titulo_legenda, tooltip, origem, como_ler,
+def secao_mapa(ctx, selecao, cores, legenda, titulo_legenda, tooltip, como_ler,
                extras_legenda=(), camadas_extras=None, fronteira=FRONTEIRA_PADRAO):
     """Bloco completo do mapa: selo, texto de leitura, mapa e legenda."""
     cores = cores.where(ctx.com_dado, an.COR_SEM_DADO).fillna(an.COR_SEM_DADO)
@@ -285,7 +273,7 @@ def secao_mapa(ctx, selecao, cores, legenda, titulo_legenda, tooltip, origem, co
     extras = [(f"{max(fronteira['weight'], 1.5)}px solid {fronteira['color']}",
                "Fronteira de Região Funcional"), *extras_legenda]
 
-    secao("Mapa interativo", f"Atividade 02 · {origem}", "green", como_ler)
+    secao("Mapa interativo", como_ler)
     # HTML do próprio folium num iframe: o mapa só é lido, não devolve cliques ao
     # app, então não é preciso um componente bidirecional como o streamlit-folium.
     html_mapa = montar_mapa(ctx, selecao, cores, tooltip, camadas_extras, fronteira).get_root().render()
@@ -308,7 +296,7 @@ def tabela(sel, colunas, ordem, crescente, formatos, nota, como_texto=()):
     `colunas`: {coluna do DataFrame: título}. `como_texto`: títulos de colunas
     categóricas que precisam virar texto para o st.dataframe.
     """
-    secao("Municípios da seleção", "Atividade 02 · novo nesta atividade", "green")
+    secao("Municípios da seleção")
     comuns = {"NM_MUN": "Município", "corede": "COREDE", "regiao_funcional": "Região Funcional"}
     colunas = {**comuns, **colunas}
     t = pd.DataFrame(sel.sort_values(ordem, ascending=crescente)[list(colunas)]).rename(columns=colunas)

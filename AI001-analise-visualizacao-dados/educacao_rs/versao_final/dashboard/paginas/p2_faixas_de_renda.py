@@ -41,13 +41,13 @@ filtrado = len(sel) < m.n
 nome_grupo = ag["singular"].lower()   # "tercil", "quartil", "quintil"
 comum.secao(
     f"Faixas de renda por {nome_grupo} de escolaridade",
-    "Atividade 02" + " · versão interativa", "blue",
-    f"Os municípios são ordenados pelo % de ocupados com ensino médio completo e divididos em "
+    f"Os municípios são ordenados pela porcentagem de ocupados com ensino médio completo e divididos em "
     f"{ag['n']} grupos com o mesmo número de municípios ({agrupamento.lower()}, cerca de "
     f"{m.n // ag['n']} em cada). Cada barra mostra como os ocupados de um grupo se distribuem pelas "
     f"seis faixas de rendimento, da base (sem rendimento) ao topo (mais de 5 salários mínimos): é "
-    f"a média das distribuições dos municípios do grupo. Os limites dos grupos são os do estado; "
-    f"com filtro, as barras mostram só os municípios da seleção.")
+    f"a média das distribuições dos municípios do grupo. Os limites dos grupos são calculados "
+    f"com todos os municípios do RS e não mudam com o filtro: um município fica sempre no "
+    f"mesmo grupo. Com filtro, as barras mostram só os municípios da seleção.")
 
 
 def pct(v):
@@ -77,6 +77,10 @@ with coluna_texto:
         base, sem, uma_duas, topo = resumo(medias)
         g0, g1 = medias.index[0], medias.index[-1]
         cai_sempre = bool((base.diff().dropna() < 0).all())
+        # A frase sobre 1 a 2 SM só aparece se for essa a faixa que mais cresce.
+        acima = ["Mais de 1 até 2 SM", "Mais de 2 até 3 SM", "Mais de 3 até 5 SM", "Mais de 5 SM"]
+        ganho = medias.loc[g1, acima] - medias.loc[g0, acima]
+        uma_duas_lidera = ganho.idxmax() == "Mais de 1 até 2 SM" and ganho.max() > 0
         st.markdown("**O que o gráfico mostra**")
         st.markdown(
             ("- **A base da renda encolhe.** " if base[g1] < base[g0] else
@@ -85,19 +89,15 @@ with coluna_texto:
             f"{g0} e **{pct(base[g1])}** no {g1}"
             + (", caindo a cada grupo." if cai_sempre else
                " — mas não cai em todos os degraus nesta seleção.") + "\n"
-            + (f"- **Quem sai da base vai sobretudo para 1 a 2 SM**, que passa de "
-               f"{pct(uma_duas[g0])} para {pct(uma_duas[g1])}.\n"
-               if uma_duas[g1] - uma_duas[g0] > topo[g1] - topo[g0] else "")
+            + (f"- **A fatia que falta na base aparece sobretudo em 1 a 2 SM**, que passa de "
+               f"{pct(uma_duas[g0])} no {g0} para {pct(uma_duas[g1])} no {g1}.\n"
+               if uma_duas_lidera else "")
             + f"- **O topo muda pouco.** Mais de 5 SM vai de {pct(topo[g0])} para {pct(topo[g1])}"
             + (": mesmo no grupo mais escolarizado, menos de 1 em cada 10 ocupados."
                if topo[g1] < 10 else "."))
-        st.caption("Associação entre municípios em 2010, não causa: o gráfico não diz se a "
-                   "escolaridade eleva a renda ou se municípios com mais renda atraem ocupados "
-                   "mais escolarizados.")
 
 st.caption("**Passe o mouse** sobre uma faixa, na legenda ou nas barras, para destacá-la nos grupos "
-           "todos e ver os valores. Fonte: Atlas do Desenvolvimento Humano no Brasil (Pnud, Ipea, "
-           "FJP), Censo 2010 (IBGE).")
+           "todos e ver os valores.")
 if filtrado and (contagem.between(1, 4)).any():
     st.caption(f"Atenção: há {nome_grupo} com menos de 5 municípios na seleção — "
                "a média dele é instável.")
@@ -134,12 +134,12 @@ with st.expander("Tercis, quartis ou quintis: o que muda ao trocar?", icon=":mat
 # Quem foge do padrão? — cada município comparado com o esperado pela escolaridade
 # ---------------------------------------------------------------------------
 comum.secao(
-    "Quem foge do padrão?", "Atividade 02 · novo nesta atividade", "green",
+    "Quem foge do padrão?",
     "O gráfico acima mostra médias de grupos; aqui cada município aparece sozinho. A curva "
     "tracejada é a fatia **esperada** para cada nível de escolaridade, ajustada sobre os 496 "
     "municípios; a faixa cinza vai de −1 a +1 desvio-padrão em torno dela. Quem está fora da "
     "faixa tem muito mais (ou muito menos) ocupados na faixa escolhida do que a escolaridade do "
-    "município faria esperar — são os casos a investigar dentro de cada COREDE.")
+    "município faria esperar.")
 
 coluna_alvo, coluna_mun = st.columns(2)
 alvo = coluna_alvo.selectbox(
@@ -164,8 +164,19 @@ with col_rank:
     st.markdown("**Os 10 mais acima e os 10 mais abaixo do esperado**"
                 if len(sel) > 20 else "**Municípios da seleção, do mais acima ao mais abaixo**")
     st.altair_chart(gi.ranking_afastamento(sel, af, dp, alvo, destaque_mun), width="stretch")
-    st.caption("Entre parênteses, o % de ocupados com ensino médio. Faixa cinza: ±1 desvio-padrão "
+    st.caption("Entre parênteses, a porcentagem de ocupados com ensino médio. Faixa cinza: ±1 desvio-padrão "
                f"({an.formatar(dp, 1)} p.p.).")
+
+# Explicação da curva esperada (estimativa: fórmula, suposição e método).
+inclinacao, intercepto = coef
+with st.expander("Como a curva esperada é calculada", icon=":material/function:"):
+    st.markdown(
+        "A fatia é uma porcentagem, então a reta é ajustada sobre o **logito** da fatia, "
+        f"log(p / (1 − p)), com os {m.n} municípios; ao voltar para %, a curva fica entre 0% e 100%.\n\n"
+        f"**esperado = 100 / (1 + e^−({an.formatar(intercepto, 3).replace('-', '−')} "
+        f"{'−' if inclinacao < 0 else '+'} {an.formatar(abs(inclinacao), 4)} × escolaridade))**\n\n"
+        f"Faixa cinza: ±1 desvio-padrão da diferença observado − esperado ({an.formatar(dp, 1)} p.p.). "
+        "Método: regressão linear sobre o logito (Agresti, *Categorical Data Analysis*).")
 
 if destaque_mun:
     linha = af.loc[sel.index[sel["NM_MUN"] == destaque_mun][0]]
@@ -193,7 +204,6 @@ for coluna, nome in an.FAIXAS.items():
 comum.secao_mapa(
     ctx, selecao, cores, legenda,
     f"Ocupados com ensino médio completo ({agrupamento.lower()} do RS)", tooltip,
-    origem="novo nesta atividade",
     como_ler=("O mapa pinta cada município pelo **grupo de escolaridade** dos ocupados — os mesmos "
               "grupos do gráfico de faixas, acima, com limites calculados sobre o estado inteiro."))
 
