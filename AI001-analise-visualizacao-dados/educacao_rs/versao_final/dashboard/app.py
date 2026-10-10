@@ -1,4 +1,4 @@
-"""Dashboard da Atividade 02 — escolaridade, renda e produção nos municípios do RS.
+"""Dashboard  — educação, renda e PIB nos municípios do RS.
 
 Executar com:  streamlit run app.py
 
@@ -11,7 +11,7 @@ import streamlit as st
 
 import comum
 
-st.set_page_config(page_title="Escolaridade, renda e PIB nos municípios do RS", page_icon="🗺️", layout="wide")
+st.set_page_config(page_title="Educação, renda e PIB nos municípios do RS", page_icon="🗺️", layout="wide")
 
 # ---------------------------------------------------------------------------
 # Navegação — uma página por pergunta, com endereço próprio

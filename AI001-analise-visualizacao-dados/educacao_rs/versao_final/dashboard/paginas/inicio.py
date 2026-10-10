@@ -6,7 +6,7 @@ import comum
 
 ctx = comum.contexto()
 
-st.title("Escolaridade, renda e PIB nos municípios do RS")
+st.title("Relação entre educação, renda e PIB nos municípios do RS")
 st.caption("Censo 2010 · 496 municípios")
 
 st.markdown(
