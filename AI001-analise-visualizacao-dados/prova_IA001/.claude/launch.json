@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dashboard-prova",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "streamlit", "run", "dashboard.py", "--server.port", "8765", "--server.headless", "true", "--browser.gatherUsageStats", "false"],
+      "port": 8765
+    }
+  ]
+}
