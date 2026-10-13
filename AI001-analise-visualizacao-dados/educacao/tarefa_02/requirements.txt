@@ -1,0 +1,17 @@
+pandas
+numpy
+altair
+plotly
+matplotlib
+seaborn
+geopandas
+folium
+ipython
+ipykernel
+nbformat
+streamlit
+pyarrow
+jupyter
+ipywidgets
+beautifulsoup4
+scipy
