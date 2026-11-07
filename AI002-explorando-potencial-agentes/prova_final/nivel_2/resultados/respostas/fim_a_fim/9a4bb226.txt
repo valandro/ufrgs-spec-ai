@@ -1,0 +1,1 @@
+{"rule": "Identify the 3x3 object with three distinct colors among four 3x3 objects and output it.", "test": [{"output": [[9, 4, 4], [4, 4, 4], [2, 2, 2]]}]}

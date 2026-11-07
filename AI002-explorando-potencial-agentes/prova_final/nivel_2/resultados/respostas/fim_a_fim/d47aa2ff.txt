@@ -1,0 +1,19 @@
+{
+  "rule": "Compare the left and right halves of the input grid separated by a column of 5s. Identical positions retain their original color, while unmatched elements from the left half become red (2) and from the right half become blue (1).",
+  "test": [
+    {
+      "output": [
+        [0, 0, 0, 0, 2, 0, 0, 0, 0, 0],
+        [0, 2, 0, 0, 0, 0, 0, 1, 0, 0],
+        [0, 0, 0, 2, 0, 0, 1, 2, 1, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 9, 0, 0, 2, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        [0, 2, 0, 1, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 2, 1, 0, 2, 1, 0],
+        [0, 2, 1, 0, 0, 0, 0, 0, 0, 0]
+      ]
+    }
+  ]
+}

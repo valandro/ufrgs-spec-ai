@@ -1,0 +1,13 @@
+{
+  "rule": "Extract the bounding box containing all non-zero pixels from the input grid.",
+  "test": [
+    {
+      "output": [
+        [0, 0, 6, 6, 6, 6],
+        [0, 0, 6, 0, 0, 0],
+        [6, 0, 6, 0, 0, 0],
+        [6, 6, 6, 6, 0, 0]
+      ]
+    }
+  ]
+}

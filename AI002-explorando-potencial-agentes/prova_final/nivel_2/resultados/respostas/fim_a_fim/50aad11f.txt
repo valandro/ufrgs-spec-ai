@@ -1,0 +1,21 @@
+{
+  "rule": "Extract each connected component of magenta shapes, find its adjacent seed color, and arrange the 4x4 shape blocks vertically or horizontally based on the components' spatial layout in the input.",
+  "test": [
+    {
+      "output": [
+        [0, 1, 1, 0],
+        [1, 1, 0, 0],
+        [0, 1, 1, 1],
+        [0, 0, 0, 1],
+        [7, 0, 0, 0],
+        [7, 7, 7, 7],
+        [7, 0, 0, 0],
+        [7, 7, 0, 0],
+        [3, 3, 3, 0],
+        [3, 0, 3, 3],
+        [3, 0, 0, 0],
+        [3, 3, 3, 0]
+      ]
+    }
+  ]
+}

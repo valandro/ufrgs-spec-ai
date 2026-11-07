@@ -1,0 +1,12 @@
+# Segredo: a chave da API nunca entra no repositório.
+.env
+.venv/
+__pycache__/
+*.pyc
+# Arquivos temporários do LaTeX
+*.aux
+*.log
+*.out
+*.blg
+*.bbl
+resultados_teste/

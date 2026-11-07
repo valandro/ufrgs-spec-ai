@@ -1,0 +1,1 @@
+{"rule": "Find 2x2 blocks of color 8 missing one corner and fill the missing corner with color 1.", "test": [{"output": [[0, 0, 0, 0, 0, 8, 8], [8, 8, 0, 0, 0, 1, 8], [8, 1, 0, 0, 0, 0, 0], [0, 0, 0, 8, 1, 0, 0], [0, 0, 0, 8, 8, 0, 0], [1, 8, 0, 0, 0, 0, 0], [8, 8, 0, 0, 0, 0, 0]]}]}

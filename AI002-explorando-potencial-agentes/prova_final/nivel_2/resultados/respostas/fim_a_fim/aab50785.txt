@@ -1,0 +1,17 @@
+{
+  "rule": "Extract the horizontal rectangular regions bounded between pairs of 2x2 blocks of color 8, and stack them vertically.",
+  "test": [
+    {
+      "output": [
+        [4, 1, 5, 0],
+        [0, 9, 0, 0],
+        [5, 9, 0, 4],
+        [7, 7, 0, 0],
+        [4, 5, 4, 3],
+        [0, 0, 7, 0],
+        [0, 0, 6, 0],
+        [0, 7, 0, 4]
+      ]
+    }
+  ]
+}

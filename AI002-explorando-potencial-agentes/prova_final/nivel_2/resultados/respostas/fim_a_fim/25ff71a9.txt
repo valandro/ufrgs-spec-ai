@@ -1,0 +1,1 @@
+{"rule": "Move all non-zero elements down by one row.", "test": [{"output": [[0, 0, 0], [2, 0, 0], [2, 0, 0]]}, {"output": [[0, 0, 0], [0, 0, 0], [0, 1, 0]]}]}

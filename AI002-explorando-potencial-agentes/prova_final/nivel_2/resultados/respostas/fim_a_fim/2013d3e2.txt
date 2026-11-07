@@ -1,0 +1,12 @@
+{
+  "rule": "Crop the 3x3 subgrid from the top-left corner of the bounding box of non-zero pixels.",
+  "test": [
+    {
+      "output": [
+        [0, 0, 0],
+        [0, 4, 4],
+        [8, 8, 3]
+      ]
+    }
+  ]
+}
