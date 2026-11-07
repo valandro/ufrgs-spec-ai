@@ -1,0 +1,30 @@
+[
+  {
+    "abordagem": "fim_a_fim",
+    "modelo": "gemini-3.5-flash-lite",
+    "raciocinio": "high",
+    "tarefas": 20,
+    "resolvidas": 15,
+    "resolvidas_treino": 8,
+    "resolvidas_avaliacao": 7,
+    "tokens_entrada": 53706,
+    "tokens_raciocinio": 189416,
+    "tokens_saida": 5445,
+    "segundos": 538.0
+  },
+  {
+    "abordagem": "codigo",
+    "modelo": "gemini-3.5-flash-lite",
+    "raciocinio": "high",
+    "tarefas": 20,
+    "resolvidas": 17,
+    "resolvidas_treino": 10,
+    "resolvidas_avaliacao": 7,
+    "tokens_entrada": 53426,
+    "tokens_raciocinio": 206845,
+    "tokens_saida": 8516,
+    "segundos": 574.2,
+    "treino_ok": 16,
+    "treino_ok_e_teste_errado": 0
+  }
+]

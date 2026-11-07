@@ -1,0 +1,12 @@
+{
+  "rule": "Find the most frequent color in the input grid, keep it unchanged, and replace all other colors with 5.",
+  "test": [
+    {
+      "output": [
+        [5, 3, 5],
+        [3, 3, 5],
+        [5, 3, 5]
+      ]
+    }
+  ]
+}

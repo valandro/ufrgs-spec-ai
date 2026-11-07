@@ -1,0 +1,16 @@
+{
+  "rule": "Locate the 7x7 frame made of color 1. The four inner corner-adjacent pixels (at relative positions (1,1), (1,5), (5,1), (5,5)) specify the colors for the top-left, top-right, bottom-left, and bottom-right 3x3 quadrants of the 7x7 output grid, respectively. Extract the corresponding 3x3 shapes for each color from the input and assemble them into the four quadrants separated by a plus-sign of zeros.",
+  "test": [
+    {
+      "output": [
+        [0, 2, 0, 0, 3, 3, 3],
+        [2, 2, 0, 0, 0, 3, 0],
+        [0, 0, 2, 0, 3, 3, 3],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 8, 8, 0, 0, 6, 6],
+        [8, 8, 8, 0, 6, 6, 0],
+        [0, 0, 8, 0, 0, 6, 6]
+      ]
+    }
+  ]
+}

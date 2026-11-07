@@ -1,0 +1,91 @@
+\documentclass{article}
+\pdfpagewidth=8.5in
+\pdfpageheight=11in
+
+\usepackage{ijcai26}
+\usepackage{times}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage[brazilian]{babel}
+
+\urlstyle{same}
+
+% Portuguese abstract heading. The IJCAI style writes "Abstract" directly, so we
+% redefine it. Babel already translates "References".
+\renewenvironment{abstract}{\centerline{\Large\bf
+Resumo}\vspace{0.5ex}\begin{quote}}{\par\end{quote}\vskip 1ex}
+
+% Required by the IJCAI template. Leave this block untouched.
+\pdfinfo{
+/TemplateVersion (IJCAI.2026.0)
+}
+
+% TODO: troque o título e o nível entregue (2 ou 3).
+\title{Resolvendo o ARC-AGI-1 com LLMs: Fim a Fim e Geração de Código\\(Nível 2)}
+
+% TODO: o seu nome e o seu e-mail.
+\author{
+    Nome Sobrenome
+    \affiliations
+    Especialização em Inteligência Artificial Avançada, UFRGS
+    \emails
+    seu.email@exemplo.com
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    % TODO: de três a cinco frases: problema, o que foi feito, principal resultado e conclusão.
+    Escreva aqui o resumo do trabalho.
+\end{abstract}
+
+\section{Introdução}
+
+% TODO: o que é o ARC-AGI-1, por que ele é difícil para LLMs e o que este trabalho compara.
+O ARC-AGI-1 avalia a capacidade de inferir regras abstratas a partir de poucos
+exemplos~\cite{chollet2019arXiv}. Neste trabalho, usamos o Gemini~\cite{geminiteam2025arXiv} \ldots
+
+\section{Método}
+
+% TODO: como o solver funciona em cada abordagem (fim a fim e geração de código), quais
+% prompts foram usados e, no nível 3, como funciona o laço de correção.
+
+\section{Experimentos}
+
+% TODO: modelo, nível de raciocínio, as 20 tarefas e o agente de codificação usado.
+
+\begin{table}[h]
+  \centering
+  \small
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{lrrrrr}
+    \toprule
+    Abordagem   & Resolvidas & Entrada & Racioc. & Saída & Tempo (s) \\
+    \midrule
+    Fim a fim   & --/20      & --      & --         & --    & --        \\
+    Código      & --/20      & --      & --         & --    & --        \\
+    \bottomrule
+  \end{tabular}
+  \caption{Tarefas resolvidas, total de tokens e tempo por abordagem.}
+  \label{tab:resultados}
+\end{table}
+
+\section{Resultados}
+
+% TODO: o que a Tabela~\ref{tab:resultados} mostra, um exemplo de acerto e um de erro.
+
+\section{Conclusão}
+
+% TODO: o que funcionou melhor, a que custo, e uma frase sobre como a IA foi usada.
+
+%% The file named.bst is a bibliography style file for BibTeX 0.99c
+\bibliographystyle{named}
+\bibliography{referencias}
+
+\end{document}

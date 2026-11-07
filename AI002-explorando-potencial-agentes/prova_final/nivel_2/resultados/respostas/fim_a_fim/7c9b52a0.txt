@@ -1,0 +1,14 @@
+{
+  "rule": "Extract all rectangular sub-grids of identical dimensions enclosed by the background color, and overlay them onto a single grid where non-zero values replace zeros.",
+  "test": [
+    {
+      "output": [
+        [0, 2, 3],
+        [2, 2, 3],
+        [4, 4, 4],
+        [6, 4, 0],
+        [6, 6, 0]
+      ]
+    }
+  ]
+}

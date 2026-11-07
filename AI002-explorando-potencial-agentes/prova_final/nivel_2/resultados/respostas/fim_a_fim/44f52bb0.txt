@@ -1,0 +1,11 @@
+{
+  "rule": "If the pattern of 2s has any reflectional or rotational symmetry, output 1; otherwise, output 7.",
+  "test": [
+    {
+      "output": [[1]]
+    },
+    {
+      "output": [[7]]
+    }
+  ]
+}

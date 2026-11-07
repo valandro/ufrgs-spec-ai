@@ -1,0 +1,15 @@
+{
+  "rule": "Extract the main object and replace its pixel colors according to the floating adjacent color pairs found outside the object.",
+  "test": [
+    {
+      "output": [
+        [1, 1, 2, 1, 1],
+        [1, 2, 2, 2, 1],
+        [1, 4, 4, 4, 1],
+        [1, 6, 6, 6, 1],
+        [1, 1, 6, 1, 1],
+        [1, 1, 1, 1, 1]
+      ]
+    }
+  ]
+}
