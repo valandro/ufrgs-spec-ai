@@ -1,0 +1,122 @@
+1. Objetivo
+Aplicar os conceitos de amostragem, estimação por intervalos de confiança e testes de hipóteses na análise de uma grande base de dados, comparando os resultados obtidos para a população e para uma amostra.
+
+O trabalho deverá integrar análise estatística, visualização de dados e interpretação de resultados, por meio da construção de painéis interativos (dashboards) e da gravação de um vídeo de apresentação.
+
+
+
+2. Escolha da base de dados
+Cada aluno deverá selecionar uma base de dados de tamanho expressivo, proveniente de uma fonte confiável, que permita realizar análises estatísticas relevantes.
+
+A base deverá conter variáveis quantitativas e qualitativas que possibilitem investigar parâmetros de média e de proporção.
+
+O aluno deverá apresentar:
+
+A fonte e o link de acesso à base de dados;
+Uma breve descrição do contexto e do objetivo da base;
+O número de observações e de variáveis;
+A definição da população de interesse e da unidade amostral;
+A descrição das variáveis selecionadas para as análises.
+
+3. Dimensionamento e seleção da amostra
+O aluno deverá calcular o tamanho necessário da amostra e selecionar uma amostra aleatória simples (AAS) da população.
+
+Para o cálculo do tamanho amostral, sugere-se utilizar a ferramenta disponível em:
+
+Calculadora de tamanho amostral — USP/Bauru
+
+O aluno deverá informar e justificar os parâmetros utilizados no cálculo, como nível de confiança, margem de erro e proporção considerada no dimensionamento.
+
+Após determinar o tamanho amostral, deverá selecionar a amostra aleatória simples, documentando o procedimento utilizado e garantindo que cada elemento da população tenha a mesma probabilidade de ser selecionado.
+
+
+
+4. Construção dos painéis de visualização
+Deverão ser construídos três painéis interativos, utilizando uma ferramenta de visualização de dados de escolha do aluno.
+
+Painel 1 — Análise descritiva da população
+Apresentar uma visão geral da população, incluindo:
+
+Indicadores descritivos relevantes;
+Distribuições das variáveis selecionadas;
+Gráficos adequados aos tipos de variáveis;
+Frequências e proporções para variáveis qualitativas;
+Medidas descritivas, como média, mediana, desvio-padrão e outras pertinentes às variáveis quantitativas.
+
+Painel 2 — Análise descritiva da amostra
+Reproduzir a análise realizada para a população, utilizando exclusivamente os dados da amostra selecionada.
+
+O painel deverá permitir visualizar as características da amostra e identificar possíveis diferenças entre as distribuições e as medidas descritivas da população e da amostra.
+
+
+
+Painel 3 — Inferência estatística e comparação dos resultados
+Este painel deverá apresentar os resultados das análises inferenciais, contemplando pelo menos duas hipóteses para um parâmetro de proporção e duas hipóteses para um parâmetro de média, conforme detalhado a seguir.
+
+a) Inferência para pelo menos um parâmetro de proporção
+
+Definir uma variável qualitativa e o evento de interesse;
+Formular uma hipótese nula ((H_0)) e uma hipótese alternativa ((H_1));
+Estimar a proporção populacional a partir da amostra, por meio de um intervalo de confiança;
+Realizar um teste de hipótese para a proporção;
+Apresentar o nível de significância, a estatística de teste, o valor-p e a conclusão;
+Comparar a proporção observada na população com a estimativa amostral e interpretar os resultados.
+b) Inferência para pelo menos um parâmetro de média
+
+Definir uma variável quantitativa de interesse;
+Formular uma hipótese nula ((H_0)) e uma hipótese alternativa ((H_1));
+Estimar a média populacional a partir da amostra, por meio de um intervalo de confiança;
+Realizar um teste de hipótese para a média;
+Apresentar o nível de significância, a estatística de teste, o valor-p e a conclusão;
+Comparar a média observada na população com a estimativa amostral e interpretar os resultados.
+As hipóteses deverão ser formuladas de acordo com questões relevantes para a base de dados escolhida. O aluno deverá justificar a escolha dos parâmetros e verificar as condições de aplicação dos procedimentos estatísticos utilizados.
+
+Comparação e interpretação
+
+O terceiro painel deverá incluir uma comparação clara entre os resultados populacionais e amostrais, destacando:
+
+As diferenças entre os parâmetros calculados com a população e as estimativas obtidas com a amostra;
+A relação entre as estimativas pontuais e os intervalos de confiança;
+As conclusões dos testes de hipóteses;
+As limitações da análise e o efeito da variabilidade amostral sobre os resultados.
+Como os dados de toda a população estarão disponíveis para comparação, os parâmetros populacionais deverão ser calculados diretamente, enquanto os procedimentos de inferência deverão utilizar os dados da amostra.
+
+
+
+5. Vídeo de apresentação
+O aluno deverá gravar um vídeo de no máximo 5 minutos, apresentando os principais aspectos do trabalho.
+
+O vídeo deverá contemplar:
+
+A base de dados escolhida, sua origem e as características da população;
+O cálculo do tamanho amostral e o procedimento de seleção da amostra aleatória simples;
+Os principais resultados dos painéis descritivos da população e da amostra;
+As hipóteses formuladas, os intervalos de confiança e os testes de hipóteses realizados;
+A interpretação dos resultados e a comparação entre população e amostra.
+A apresentação deverá ser objetiva, priorizando a interpretação estatística dos resultados, e não apenas a descrição dos gráficos ou a exposição de cálculos.
+
+
+
+6. Entrega
+O aluno deverá entregar:
+
+Link para os painéis (1: análise descritiva da população; 2: análise descritiva da amostra; 3: inferência estatística e comparação dos resultados)
+Link do vídeo no YouTube: apresentação do trabalho, com duração máxima de 5 minutos;
+Link da base de dados original, acompanhado da identificação da fonte.
+Os links deverão estar acessíveis para visualização, sem necessidade de solicitar autorização ao avaliador. O aluno deverá garantir que os painéis e o vídeo permaneçam disponíveis durante o período de avaliação.
+
+7. Critérios de avaliação
+A avaliação considerará a qualidade metodológica, a correção dos procedimentos estatísticos, a clareza das visualizações e a capacidade de interpretar e comunicar os resultados.
+
+Critério	Peso
+Escolha, descrição e contextualização da base de dados	10%
+Dimensionamento e seleção da amostra aleatória simples	10%
+Qualidade e adequação do painel da população	10%
+Qualidade e adequação do painel da amostra	10%
+Correção dos intervalos de confiança e testes de hipóteses para médias e proporções	20%
+Interpretação dos resultados e comparação entre população e amostra	20%
+Clareza, objetividade e qualidade da apresentação em vídeo	20%
+Total	100%
+
+
+
