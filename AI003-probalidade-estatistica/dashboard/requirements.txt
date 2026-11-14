@@ -1,3 +1,5 @@
-streamlit>=1.40
+streamlit>=1.46
 pandas
+numpy
 plotly
+scipy
