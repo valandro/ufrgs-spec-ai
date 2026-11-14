@@ -4,3 +4,6 @@
 # procedencia (URL + SHA-256 + data) nos arquivos .fonte.json, entao nao
 # ha motivo para versionar dezenas de MB de shapefile, GeoPackage e HTML.
 AI001-analise-visualizacao-dados/educacao_rs/atividade02_lucas/dados/
+# Boletins de urna brutos do TSE (~1,6 GB). Baixar do Portal de Dados Abertos;
+# dashboard/preparar_dados.py gera os CSVs agregados que são versionados.
+AI003-probalidade-estatistica/bweb_*/*.csv

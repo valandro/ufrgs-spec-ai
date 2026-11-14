@@ -1,8 +1,15 @@
 """Gera dados/populacao.csv e dados/amostra.csv a partir dos boletins de urna do TSE.
 
-Executar uma vez (lê ~1,6 GB de CSV); o dashboard usa apenas os arquivos gerados.
+Uso:
+  python dashboard/preparar_dados.py                    # lê os CSVs brutos do TSE (~1,6 GB)
+  python dashboard/preparar_dados.py --a-partir-do-csv  # só recalcula as variáveis derivadas
+                                                        # sobre o dados/populacao.csv já agregado
+
+A AAS (semente 42, n = 793) é sorteada sobre a população na mesma ordem de linhas,
+então os dois modos geram exatamente a mesma amostra.
 Mesma lógica e semente do notebook trabalho_final_organizacao.ipynb.
 """
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -33,7 +40,6 @@ def agrega_turno(caminho, sufixo):
     out["QT_BRANCO_NULO"] = d[d.DS_TIPO_VOTAVEL.isin(["Branco", "Nulo"])].groupby(CHAVE).QT_VOTOS.sum()
     out["QT_BRANCO_NULO"] = out.QT_BRANCO_NULO.fillna(0)
     total = out.VOTOS_VALIDOS + out.QT_BRANCO_NULO                 # votos totais = válidos + brancos + nulos
-    out["VENCEDOR"] = np.where(out.LULA > out["FLAVIO BOLSONARO"], "LULA", "FLAVIO BOLSONARO")
     out["PCT_LULA"] = out.LULA / out.VOTOS_VALIDOS * 100
     out["PCT_FLAVIO"] = out["FLAVIO BOLSONARO"] / out.VOTOS_VALIDOS * 100
     out["PCT_LULA_TOTAL"] = out.LULA / total * 100                    # % sobre votos totais (inclui brancos e nulos)
@@ -43,13 +49,30 @@ def agrega_turno(caminho, sufixo):
     return out.add_suffix("_" + sufixo)
 
 
-def main():
-    pop = agrega_turno(CSV_1T, "1t").join(agrega_turno(CSV_2T, "2t"), how="inner").reset_index()
+def deriva(pop):
+    """Variáveis derivadas. Idempotente: pode ser reaplicada sobre o CSV já gerado."""
+    for t in ("1t", "2t"):
+        lula, flavio = pop[f"LULA_{t}"], pop[f"FLAVIO BOLSONARO_{t}"]
+        # Empate é categoria própria: atribuí-lo a um candidato inflaria a proporção dele.
+        pop[f"VENCEDOR_{t}"] = np.select([lula > flavio, flavio > lula], ["LULA", "FLAVIO BOLSONARO"], default="EMPATE")
+    pop["PCT_OUTROS_1t"] = 100 - pop.PCT_LULA_1t - pop.PCT_FLAVIO_1t    # votos a redistribuir no 2º turno
     pop["DELTA_LULA_PP"] = pop.PCT_LULA_2t - pop.PCT_LULA_1t
     pop["DELTA_LULA_TOTAL_PP"] = pop.PCT_LULA_TOTAL_2t - pop.PCT_LULA_TOTAL_1t
     pop["DELTA_ABST_PP"] = pop.PCT_ABSTENCAO_2t - pop.PCT_ABSTENCAO_1t
-    pop["MUDOU_VENCEDOR"] = np.where(pop.VENCEDOR_1t != pop.VENCEDOR_2t, "Sim", "Não")
+    # "Sim" só quando o vencedor troca entre os dois candidatos; empate em algum turno fica à parte.
+    empate = (pop.VENCEDOR_1t == "EMPATE") | (pop.VENCEDOR_2t == "EMPATE")
+    pop["MUDOU_VENCEDOR"] = np.select([empate, pop.VENCEDOR_1t != pop.VENCEDOR_2t],
+                                      ["Indefinido (empate)", "Sim"], default="Não")
     pop["TRAJETORIA"] = pop.VENCEDOR_1t.str.split().str[0] + " → " + pop.VENCEDOR_2t.str.split().str[0]
+    return pop
+
+
+def main():
+    if "--a-partir-do-csv" in sys.argv:
+        pop = pd.read_csv(SAIDA / "populacao.csv")
+    else:
+        pop = agrega_turno(CSV_1T, "1t").join(agrega_turno(CSV_2T, "2t"), how="inner").reset_index()
+    pop = deriva(pop)
 
     amostra = pop.sample(n=N_AMOSTRA, replace=False, random_state=SEED)
     SAIDA.mkdir(exist_ok=True)
